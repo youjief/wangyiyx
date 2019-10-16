@@ -8,6 +8,8 @@ package com.wyyx.cn.consumer.vo;
  * Description: No Description
  */
 public class Test {
-    int i=1;
+    int i = 1;
+    int j = 2;
     long o=123;
+    double d = 3;
 }
