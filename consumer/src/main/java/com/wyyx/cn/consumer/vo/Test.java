@@ -9,4 +9,5 @@ package com.wyyx.cn.consumer.vo;
  */
 public class Test {
     int i=1;
+    long o=123;
 }
