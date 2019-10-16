@@ -12,4 +12,5 @@ public class Test {
     int j = 2;
     long o=123;
     double d = 3;
+    String a = "订单高翌";
 }
