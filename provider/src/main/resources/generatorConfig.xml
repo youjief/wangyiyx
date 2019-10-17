@@ -43,21 +43,21 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="" tableName="order_info" domainObjectName="Order" >
+        <table schema="" tableName="user_info" domainObjectName="User">
             <property name="useActualColumnNames" value="false"/>
             <columnOverride column="id" jdbcType="BIGINT" javaType="java.lang.Long"></columnOverride>
         </table>
 
         <!--<table schema="" tableName="store_info" domainObjectName="StoreInfo">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-            <!--<columnOverride column="lat" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
-            <!--<columnOverride column="lon" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
-            <!--<columnOverride column="state" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
-            <!--<columnOverride column="STORE_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<columnOverride column="lat" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
+        <!--<columnOverride column="lon" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
+        <!--<columnOverride column="state" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
+        <!--<columnOverride column="STORE_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
         <!--</table>-->
         <!--<table schema="" tableName="business" domainObjectName="Business">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-            <!--<columnOverride column="B_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<columnOverride column="B_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
         <!--</table>-->
     </context>
 </generatorConfiguration>

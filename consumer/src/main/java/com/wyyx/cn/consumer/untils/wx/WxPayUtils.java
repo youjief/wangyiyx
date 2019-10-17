@@ -1,6 +1,7 @@
 package com.wyyx.cn.consumer.untils.wx;
 
-import com.wyyx.cn.consumer.untils.wx.WXPayConstants.*;
+//import com.wyyx.cn.consumer.untils.wx.WXPayConstants.*;
+import com.wyyx.cn.consumer.untils.wx.WXPayConstants.SignType;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -28,7 +29,7 @@ public class WxPayUtils {
      * @return 签名
      */
     public static String generateSignature(final Map<String, String> data, String key) throws Exception {
-        return generateSignature(data, key, SignType.MD5);
+        return generateSignature(data, key,SignType.MD5);
     }
     /**
      * 生成签名. 注意，若含有sign_type字段，必须和signType参数保持一致。
