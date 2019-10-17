@@ -335,4 +335,8 @@
       goods_scores = #{goodsScores,jdbcType=VARCHAR}
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
+
+  <select id="getOrderList" resultMap="BaseResultMap">
+    select * from order_info ORDER BY pay_time DESC LIMIT 0,2
+  </select>
 </mapper>

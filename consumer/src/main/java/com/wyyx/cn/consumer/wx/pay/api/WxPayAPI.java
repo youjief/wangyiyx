@@ -1,11 +1,9 @@
 package com.wyyx.cn.consumer.wx.pay.api;
 
 import com.google.common.collect.Maps;
-import com.kgc.kgc_consumer.utils.wx.RandomStr;
-import com.kgc.kgc_consumer.utils.wx.WxPayUtils;
-import com.kgc.kgc_consumer.vo.wx.pay.WxPayVo;
 import com.wyyx.cn.consumer.untils.wx.RandomStr;
 import com.wyyx.cn.consumer.untils.wx.WxPayUtils;
+import com.wyyx.cn.consumer.vo.WxPayVo;
 import com.wyyx.cn.consumer.wx.pay.WxPayModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,16 +17,9 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import static com.kgc.kgc_consumer.utils.UrlUtils.doPost;
-import static com.kgc.kgc_consumer.utils.wx.WxPayUtils.*;
+import static com.wyyx.cn.consumer.untils.url.UrlUtils.*;
+import static com.wyyx.cn.consumer.untils.wx.WxPayUtils.*;
 
-/**
- * Created with IntelliJ IDEA.
- * User: 91917
- * Date: 2019/10/15
- * Time: 13:55
- * Description: No Description
- */
 @Component
 public class WxPayAPI {
     @Autowired

@@ -1,8 +1,8 @@
 package com.wyyx.cn.consumer.config;
 
 
-import com.fyj.cn.consumer.config.custom.CurrentComplete;
-import com.fyj.cn.consumer.config.custom.LoginReqComplete;
+import com.wyyx.cn.consumer.config.custom.CurrentComplete;
+import com.wyyx.cn.consumer.config.custom.LoginReqComplete;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;

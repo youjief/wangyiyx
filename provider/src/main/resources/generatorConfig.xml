@@ -18,13 +18,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-<<<<<<< HEAD
-                        connectionURL="jdbc:mysql://192.168.1.139:3306/wwyx"
-                        userId="root" password="123456">
-=======
                         connectionURL="jdbc:mysql://localhost:3306/wy?=true"
                         userId="root" password="root">
->>>>>>> 4832c22722c4f6ca4bb078b2f90c2475bd48a38e
         </jdbcConnection>
 
         <javaTypeResolver>

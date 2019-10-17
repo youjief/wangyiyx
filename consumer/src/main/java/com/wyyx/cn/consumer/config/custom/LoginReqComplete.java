@@ -2,12 +2,9 @@ package com.wyyx.cn.consumer.config.custom;
 
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.fastjson.JSONObject;
-import com.fyj.cn.consumer.until.RedisUtils;
-import com.fyj.cn.consumer.vo.SumUserVo;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import com.wyyx.cn.consumer.untils.redis.RedisUtils;
+import com.wyyx.cn.consumer.vo.SumUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

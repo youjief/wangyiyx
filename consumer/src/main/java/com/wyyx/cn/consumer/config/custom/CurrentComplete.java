@@ -1,6 +1,6 @@
 package com.wyyx.cn.consumer.config.custom;
 
-import com.fyj.cn.consumer.vo.SumUserVo;
+import com.wyyx.cn.consumer.vo.SumUserVo;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;

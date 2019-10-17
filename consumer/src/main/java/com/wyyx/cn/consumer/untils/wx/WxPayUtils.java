@@ -1,7 +1,6 @@
 package com.wyyx.cn.consumer.untils.wx;
 
-
-import com.kgc.kgc_consumer.utils.wx.WXPayConstants.SignType;
+import com.wyyx.cn.consumer.untils.wx.WXPayConstants.*;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -20,17 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-
-/**
- * Created with IntelliJ IDEA.
- * User: 91917
- * Date: 2019/10/15
- * Time: 14:16
- * Description: No Description
- */
 public class WxPayUtils {
-
-
     /**
      * 生成签名
      *
@@ -41,7 +30,6 @@ public class WxPayUtils {
     public static String generateSignature(final Map<String, String> data, String key) throws Exception {
         return generateSignature(data, key, SignType.MD5);
     }
-
     /**
      * 生成签名. 注意，若含有sign_type字段，必须和signType参数保持一致。
      *
