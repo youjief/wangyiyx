@@ -13,4 +13,5 @@ public class Test {
     long o=123;
     double d = 3;
     String a = "订单高翌";
+    String s = "吴仕超";
 }
