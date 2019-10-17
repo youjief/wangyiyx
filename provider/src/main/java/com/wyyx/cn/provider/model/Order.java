@@ -1,9 +1,10 @@
 package com.wyyx.cn.provider.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Order {
+public class Order implements Serializable {
     private Integer orderId;
 
     private Integer userId;

@@ -1,8 +1,9 @@
 package com.wyyx.cn.provider.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Goods {
+public class Goods implements Serializable {
     private Integer goodsId;
 
     private String goodsName;
