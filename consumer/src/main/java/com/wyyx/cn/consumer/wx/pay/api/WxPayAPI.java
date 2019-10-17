@@ -4,7 +4,9 @@ import com.google.common.collect.Maps;
 import com.kgc.kgc_consumer.utils.wx.RandomStr;
 import com.kgc.kgc_consumer.utils.wx.WxPayUtils;
 import com.kgc.kgc_consumer.vo.wx.pay.WxPayVo;
-import com.kgc.kgc_consumer.wxuser.pay.WxPayModel;
+import com.wyyx.cn.consumer.untils.wx.RandomStr;
+import com.wyyx.cn.consumer.untils.wx.WxPayUtils;
+import com.wyyx.cn.consumer.wx.pay.WxPayModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -4,6 +4,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.fyj.cn.provider.mapper")
+@MapperScan("com.wyyx.cn.provider.mapper")
 public class MybatisConfiguration {
 }
