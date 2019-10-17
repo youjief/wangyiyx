@@ -1,8 +1,8 @@
 package com.wyyx.cn.provider.service;
 
 import com.wyyx.cn.provider.model.User;
-
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,5 +26,12 @@ public interface UserService {
 
     //becomeVip(放入微信支付成功回调函数里)
 
+    int register(User user);
+
+    boolean isExit(User user);
+
+    List<User> getAllUser(User user);
+
+    String userPhone(String userPhone);
 
 }

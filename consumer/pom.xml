@@ -71,6 +71,12 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.wyyx.cn</groupId>
+            <artifactId>provider</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

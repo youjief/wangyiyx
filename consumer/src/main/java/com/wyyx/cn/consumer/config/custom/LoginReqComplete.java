@@ -2,12 +2,9 @@ package com.wyyx.cn.consumer.config.custom;
 
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.fastjson.JSONObject;
-import com.fyj.cn.consumer.until.RedisUtils;
-import com.fyj.cn.consumer.vo.SumUserVo;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import com.wyyx.cn.consumer.untils.redis.RedisUtils;
+import com.wyyx.cn.consumer.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,7 +42,7 @@ public class LoginReqComplete implements HandlerInterceptor {
                 String userToken = (String) redisUtils.get(StringUtils.isNotEmpty(token) ? token : wxToken);
 
                 if (StringUtils.isNotEmpty(userToken)) {
-                    SumUserVo sumUserVo = JSONObject.parseObject(userToken, SumUserVo.class);
+                    UserVo sumUserVo = JSONObject.parseObject(userToken, UserVo.class);
                     request.setAttribute("userToken", sumUserVo);
                     return true;
                 } else {

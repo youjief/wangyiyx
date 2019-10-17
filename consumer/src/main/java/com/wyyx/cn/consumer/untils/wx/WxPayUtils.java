@@ -1,7 +1,6 @@
 package com.wyyx.cn.consumer.untils.wx;
 
-
-import com.kgc.kgc_consumer.utils.wx.WXPayConstants.SignType;
+import com.wyyx.cn.consumer.untils.wx.WXPayConstants.SignType;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -39,7 +38,7 @@ public class WxPayUtils {
      * @return 签名
      */
     public static String generateSignature(final Map<String, String> data, String key) throws Exception {
-        return generateSignature(data, key, SignType.MD5);
+        return generateSignature(data, key,SignType.MD5);
     }
 
     /**

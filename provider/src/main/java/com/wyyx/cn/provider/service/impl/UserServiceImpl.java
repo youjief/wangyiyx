@@ -2,13 +2,16 @@ package com.wyyx.cn.provider.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.wyyx.cn.provider.contants.UserContants;
+
 import com.wyyx.cn.provider.mapper.UserMapper;
 import com.wyyx.cn.provider.model.User;
 import com.wyyx.cn.provider.model.UserExample;
 import com.wyyx.cn.provider.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,6 +19,11 @@ import java.math.BigDecimal;
  * Date: 2019/10/17
  * Time: 14:17
  * Description: No Description
+ */
+
+
+/**
+ * Created by GY on 2019/10/17 15:22
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -88,5 +96,34 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+
+
+    public int register(User user) {
+        return userMapper.insertSelective(user);
+    }
+
+    @Override
+    public boolean isExit(User user) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andOpenidEqualTo(user.getOpenid());
+        List<User> users=userMapper.selectByExample(userExample);
+
+        if(users.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
+    public List<User> getAllUser(User user) {
+        List<User> list=userMapper.getAllUser(user);
+        return  list;
+    }
+
+    @Override
+    public String userPhone(String userPhone) {
+        return userMapper.userPhone(userPhone);
+    }
 
 }

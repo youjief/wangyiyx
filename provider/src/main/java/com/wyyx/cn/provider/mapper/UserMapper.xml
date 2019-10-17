@@ -525,4 +525,43 @@
       vip_create_time = #{vipCreateTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
+    <select id="getAllUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user_info
+        where 1=1
+        <if test="id != null">
+            and id=#{id,jdbcType=BIGINT}
+        </if>
+        <if test="openid != null">
+            and openid=#{openid,jdbcType=VARCHAR}
+        </if>
+        <if test="nickname != null">
+            and nickname=#{nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null">
+            and sex=#{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="language != null">
+            and `language` = #{language,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null">
+            and city=#{city,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null">
+            and province=#{province,jdbcType=VARCHAR}
+        </if>
+        <if test="country != null">
+            and country=#{country,jdbcType=VARCHAR}
+        </if>
+        <if test="headimgurl != null">
+            and headimgurl=#{headimgurl,jdbcType=VARCHAR}
+        </if>
+        <if test="privilege != null">
+            and privilege=#{privilege,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <insert id="userPhone" parameterType="com.wyyx.cn.provider.model.User">
+       update user_info (user_phone) set user_phone = #{userPhone,jdbcType=VARCHAR} where openid = #{openid,jdbcType=VARCHAR}
+    </insert>
 </mapper>
