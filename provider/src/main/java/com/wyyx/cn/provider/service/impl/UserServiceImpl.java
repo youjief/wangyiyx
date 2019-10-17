@@ -1,5 +1,6 @@
 package com.wyyx.cn.provider.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.wyyx.cn.provider.contants.UserContants;
 import com.wyyx.cn.provider.mapper.UserMapper;
 import com.wyyx.cn.provider.model.User;
@@ -16,6 +17,7 @@ import java.math.BigDecimal;
  * Time: 14:17
  * Description: No Description
  */
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -56,7 +58,10 @@ public class UserServiceImpl implements UserService {
         int halfOfPriceScore = goods_price.intValue() / UserContants.GOODS_TO_USER_EXP_BASE;
         int newExpValue = oldExpValue + UserContants.SUCCESS_BUY_GOODS_ADD_EXP + halfOfPriceScore;
         user.setExpValue(newExpValue);
-        return userMapper.updateByExampleSelective(user, userExample);
+        int returnExp = userMapper.updateByExampleSelective(user, userExample);
+        //判断等级
+        changeAndReturnLevel(user);
+        return returnExp;
     }
 
     @Override

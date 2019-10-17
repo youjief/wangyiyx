@@ -18,7 +18,7 @@ public interface UserService {
     //登录加经验
     int loginAddExp(User user);
 
-    //购买商品加经验and积分
+    //购买商品加经验
     int buyAddExp(User user, BigDecimal goods_price);
 
     //根据经验值来修改等级
