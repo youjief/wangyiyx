@@ -18,13 +18,9 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-<<<<<<< HEAD
-                        connectionURL="jdbc:mysql://192.168.1.139:3306/wwyx"
-                        userId="root" password="123456">
-=======
                         connectionURL="jdbc:mysql://localhost:3306/wy?=true"
                         userId="root" password="root">
->>>>>>> 4832c22722c4f6ca4bb078b2f90c2475bd48a38e
+
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -48,21 +44,21 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="" tableName="order_info" domainObjectName="Order" >
+        <table schema="" tableName="user_info" domainObjectName="User">
             <property name="useActualColumnNames" value="false"/>
             <columnOverride column="id" jdbcType="BIGINT" javaType="java.lang.Long"></columnOverride>
         </table>
 
         <!--<table schema="" tableName="store_info" domainObjectName="StoreInfo">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-            <!--<columnOverride column="lat" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
-            <!--<columnOverride column="lon" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
-            <!--<columnOverride column="state" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
-            <!--<columnOverride column="STORE_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<columnOverride column="lat" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
+        <!--<columnOverride column="lon" jdbcType="FLOAT" javaType="java.lang.Double"></columnOverride>-->
+        <!--<columnOverride column="state" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
+        <!--<columnOverride column="STORE_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
         <!--</table>-->
         <!--<table schema="" tableName="business" domainObjectName="Business">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-            <!--<columnOverride column="B_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<columnOverride column="B_TYPE" jdbcType="TINYINT" javaType="java.lang.Integer"></columnOverride>-->
         <!--</table>-->
     </context>
 </generatorConfiguration>

@@ -1704,6 +1704,66 @@ public class UserExample {
             addCriterion("user_addr not between", value1, value2, "userAddr");
             return (Criteria) this;
         }
+
+        public Criteria andVipCreateTimeIsNull() {
+            addCriterion("vip_create_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeIsNotNull() {
+            addCriterion("vip_create_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeEqualTo(Date value) {
+            addCriterion("vip_create_time =", value, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeNotEqualTo(Date value) {
+            addCriterion("vip_create_time <>", value, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeGreaterThan(Date value) {
+            addCriterion("vip_create_time >", value, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("vip_create_time >=", value, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeLessThan(Date value) {
+            addCriterion("vip_create_time <", value, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("vip_create_time <=", value, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeIn(List<Date> values) {
+            addCriterion("vip_create_time in", values, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeNotIn(List<Date> values) {
+            addCriterion("vip_create_time not in", values, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("vip_create_time between", value1, value2, "vipCreateTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andVipCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("vip_create_time not between", value1, value2, "vipCreateTime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

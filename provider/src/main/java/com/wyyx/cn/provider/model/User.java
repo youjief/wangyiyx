@@ -1,9 +1,8 @@
 package com.wyyx.cn.provider.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
+public class User {
     private Long userId;
 
     private String userPhone;
@@ -51,6 +50,8 @@ public class User implements Serializable {
     private Integer birthIsChange;
 
     private String userAddr;
+
+    private Date vipCreateTime;
 
     public Long getUserId() {
         return userId;
@@ -242,5 +243,13 @@ public class User implements Serializable {
 
     public void setUserAddr(String userAddr) {
         this.userAddr = userAddr;
+    }
+
+    public Date getVipCreateTime() {
+        return vipCreateTime;
+    }
+
+    public void setVipCreateTime(Date vipCreateTime) {
+        this.vipCreateTime = vipCreateTime;
     }
 }
