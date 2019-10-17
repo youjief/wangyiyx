@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
         int newExpValue = oldExpValue + UserContants.LOGIN_TO_ADD_EXP;
         user.setExpValue(newExpValue);
         //增加登录经验
-        int returnExp = userMapper.updateByExampleSelective(user, userExample)
+        int returnExp = userMapper.updateByExampleSelective(user, userExample);
         //判断等级
         changeAndReturnLevel(user);
         //增加登录经验
