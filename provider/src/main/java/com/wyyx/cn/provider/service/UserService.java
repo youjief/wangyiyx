@@ -12,17 +12,19 @@ import java.math.BigDecimal;
  * Description: No Description
  */
 public interface UserService {
-    //订单完成后给该用户增加商品价格百分之十的积分
+    //订单完成后给该用户增加商品价格百分之十的积分（放在微信回调）
     int addUser_scores(User user, BigDecimal goods_price);
 
     //登录加经验
     int loginAddExp(User user);
 
-    //购买商品加经验
+    //购买商品加经验（放在微信回调）
     int buyAddExp(User user, BigDecimal goods_price);
 
     //根据经验值来修改等级
     int changeAndReturnLevel(User user);
+
+    //becomeVip(放入微信支付成功回调函数里)
 
 
 }
