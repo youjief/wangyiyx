@@ -42,8 +42,6 @@ public class UserController {
     @Reference
     private UserService userService;
 
-
-
     @ApiOperation("微信登录")
     @GetMapping("/send")
     public String sendCode() {
@@ -108,8 +106,8 @@ public class UserController {
        return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG,ReturnResultContants.LOGIN_AGREE);
     }
 
-    @ApiOperation("注册")
-    @GetMapping(value = "/register")
+    @ApiOperation("绑定手机号")
+    @GetMapping(value = "/userPhone")
     public ReturnResult userPhone(@ApiParam(value = "手机号",required = true) @RequestParam(value = "gender")String userPhone,
                                   @Valid UserVo userVo){
         String token = null;

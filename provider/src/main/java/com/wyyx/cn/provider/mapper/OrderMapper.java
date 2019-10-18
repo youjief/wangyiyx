@@ -2,7 +2,9 @@ package com.wyyx.cn.provider.mapper;
 
 import com.wyyx.cn.provider.model.Order;
 import com.wyyx.cn.provider.model.OrderExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OrderMapper {
@@ -28,5 +30,11 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    List<Order> getOrderList();
+    List<Order> getOrderList(int startItem, int pageSize);
+
+    int totalOrderList();
+
+    List<Order> getOrderByStatus(int orderStatus,int startItem, int pageSize);
+
+    int statusOrderList(int orderStatus);
 }

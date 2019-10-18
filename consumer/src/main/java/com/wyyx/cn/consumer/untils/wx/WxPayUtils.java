@@ -1,6 +1,5 @@
 package com.wyyx.cn.consumer.untils.wx;
 
-//import com.wyyx.cn.consumer.untils.wx.WXPayConstants.*;
 import com.wyyx.cn.consumer.untils.wx.WXPayConstants.SignType;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
