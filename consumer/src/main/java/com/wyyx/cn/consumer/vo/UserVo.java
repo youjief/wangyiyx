@@ -37,9 +37,12 @@ public class UserVo implements Serializable {
     @ApiModelProperty(value = "性别",required = true)
     private String sex;
 
+    @ApiModelProperty(value = "生日",required = true)
+    private String birthday;
+
     private String ipAddress;
 
-    private String agree;
+    private int agree=1;
 
 
 

@@ -1,20 +1,9 @@
 package com.wyyx.cn.provider.model;
 
-<<<<<<< HEAD
-import lombok.Data;
-
-import java.io.Serializable;
-import java.util.Date;
-
-@Data
-public class User implements Serializable {
-    private static final long serialVersionUID = 5411760744065952413L;
-=======
 import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable {
->>>>>>> 9fd4455be152eb34c791953713019e3acc1ac1a5
     private Long userId;
 
     private String userPhone;
@@ -55,17 +44,15 @@ public class User implements Serializable {
 
     private String ipAddress;
 
-    private String vip;
+    private Integer vip;
 
-    private String birthday;
+    private Date birthday;
 
     private Integer birthIsChange;
 
     private String userAddr;
 
-<<<<<<< HEAD
-=======
-    private Date vipCreateTime;
+    private Date vipEndTime;
 
     public Long getUserId() {
         return userId;
@@ -227,19 +214,19 @@ public class User implements Serializable {
         this.ipAddress = ipAddress;
     }
 
-    public String getVip() {
+    public Integer getVip() {
         return vip;
     }
 
-    public void setVip(String vip) {
+    public void setVip(Integer vip) {
         this.vip = vip;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -259,12 +246,11 @@ public class User implements Serializable {
         this.userAddr = userAddr;
     }
 
-    public Date getVipCreateTime() {
-        return vipCreateTime;
+    public Date getVipEndTime() {
+        return vipEndTime;
     }
 
-    public void setVipCreateTime(Date vipCreateTime) {
-        this.vipCreateTime = vipCreateTime;
+    public void setVipEndTime(Date vipEndTime) {
+        this.vipEndTime = vipEndTime;
     }
->>>>>>> 9fd4455be152eb34c791953713019e3acc1ac1a5
 }

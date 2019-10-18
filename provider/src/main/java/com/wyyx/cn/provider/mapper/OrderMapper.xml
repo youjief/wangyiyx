@@ -7,7 +7,7 @@
     <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
     <result column="delivery_addr" jdbcType="VARCHAR" property="deliveryAddr" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
-    <result column="goods_count" jdbcType="VARCHAR" property="goodsCount" />
+    <result column="goods_count" jdbcType="INTEGER" property="goodsCount" />
     <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
     <result column="order_channel" jdbcType="VARCHAR" property="orderChannel" />
     <result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
@@ -115,7 +115,7 @@
       create_time, pay_time, goods_freight, 
       goods_scores)
     values (#{orderId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
-      #{deliveryAddr,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, #{goodsCount,jdbcType=VARCHAR}, 
+      #{deliveryAddr,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, #{goodsCount,jdbcType=INTEGER}, 
       #{goodsPrice,jdbcType=DECIMAL}, #{orderChannel,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, #{goodsFreight,jdbcType=VARCHAR}, 
       #{goodsScores,jdbcType=VARCHAR})
@@ -180,7 +180,7 @@
         #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsCount != null">
-        #{goodsCount,jdbcType=VARCHAR},
+        #{goodsCount,jdbcType=INTEGER},
       </if>
       <if test="goodsPrice != null">
         #{goodsPrice,jdbcType=DECIMAL},
@@ -230,7 +230,7 @@
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
       </if>
       <if test="record.goodsCount != null">
-        goods_count = #{record.goodsCount,jdbcType=VARCHAR},
+        goods_count = #{record.goodsCount,jdbcType=INTEGER},
       </if>
       <if test="record.goodsPrice != null">
         goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
@@ -265,7 +265,7 @@
       goods_id = #{record.goodsId,jdbcType=INTEGER},
       delivery_addr = #{record.deliveryAddr,jdbcType=VARCHAR},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      goods_count = #{record.goodsCount,jdbcType=VARCHAR},
+      goods_count = #{record.goodsCount,jdbcType=INTEGER},
       goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
       order_channel = #{record.orderChannel,jdbcType=VARCHAR},
       order_status = #{record.orderStatus,jdbcType=VARCHAR},
@@ -293,7 +293,7 @@
         goods_name = #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsCount != null">
-        goods_count = #{goodsCount,jdbcType=VARCHAR},
+        goods_count = #{goodsCount,jdbcType=INTEGER},
       </if>
       <if test="goodsPrice != null">
         goods_price = #{goodsPrice,jdbcType=DECIMAL},
@@ -325,7 +325,7 @@
       goods_id = #{goodsId,jdbcType=INTEGER},
       delivery_addr = #{deliveryAddr,jdbcType=VARCHAR},
       goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_count = #{goodsCount,jdbcType=VARCHAR},
+      goods_count = #{goodsCount,jdbcType=INTEGER},
       goods_price = #{goodsPrice,jdbcType=DECIMAL},
       order_channel = #{orderChannel,jdbcType=VARCHAR},
       order_status = #{orderStatus,jdbcType=VARCHAR},
@@ -335,8 +335,7 @@
       goods_scores = #{goodsScores,jdbcType=VARCHAR}
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
-
-  <select id="getOrderList" resultMap="BaseResultMap">
-    select * from order_info ORDER BY pay_time DESC LIMIT 0,2
-  </select>
+    <select id="findCount" resultMap="BaseResultMap">
+       select goods_count from order_info where goods_id = #{goodsId,jdbcType=INTEGER}
+    </select>
 </mapper>

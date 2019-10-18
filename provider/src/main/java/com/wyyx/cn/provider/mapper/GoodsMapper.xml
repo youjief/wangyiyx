@@ -2,16 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wyyx.cn.provider.mapper.GoodsMapper">
   <resultMap id="BaseResultMap" type="com.wyyx.cn.provider.model.Goods">
-    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <id column="goods_id" jdbcType="BIGINT" property="goodsId" />
     <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
     <result column="goods_title" jdbcType="VARCHAR" property="goodsTitle" />
     <result column="goods_img" jdbcType="VARCHAR" property="goodsImg" />
     <result column="goods_kind" jdbcType="INTEGER" property="goodsKind" />
-    <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
-    <result column="goods_stock" jdbcType="VARCHAR" property="goodsStock" />
-    <result column="goods_praise" jdbcType="VARCHAR" property="goodsPraise" />
+    <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
+    <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="goods_praise" jdbcType="DOUBLE" property="goodsPraise" />
     <result column="goods_is_seckill" jdbcType="VARCHAR" property="goodsIsSeckill" />
-    <result column="goods_sales" jdbcType="VARCHAR" property="goodsSales" />
+    <result column="goods_sales" jdbcType="INTEGER" property="goodsSales" />
+    <result column="goods_up_time" jdbcType="TIMESTAMP" property="goodsUpTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,7 +74,7 @@
   </sql>
   <sql id="Base_Column_List">
     goods_id, goods_name, goods_title, goods_img, goods_kind, goods_price, goods_stock, 
-    goods_praise, goods_is_seckill, goods_sales
+    goods_praise, goods_is_seckill, goods_sales, goods_up_time
   </sql>
   <select id="selectByExample" parameterType="com.wyyx.cn.provider.model.GoodsExample" resultMap="BaseResultMap">
     select
@@ -89,15 +90,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from goods_info
-    where goods_id = #{goodsId,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from goods_info
-    where goods_id = #{goodsId,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.wyyx.cn.provider.model.GoodsExample">
     delete from goods_info
@@ -109,11 +110,11 @@
     insert into goods_info (goods_id, goods_name, goods_title, 
       goods_img, goods_kind, goods_price, 
       goods_stock, goods_praise, goods_is_seckill, 
-      goods_sales)
-    values (#{goodsId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsTitle,jdbcType=VARCHAR}, 
-      #{goodsImg,jdbcType=VARCHAR}, #{goodsKind,jdbcType=INTEGER}, #{goodsPrice,jdbcType=DECIMAL}, 
-      #{goodsStock,jdbcType=VARCHAR}, #{goodsPraise,jdbcType=VARCHAR}, #{goodsIsSeckill,jdbcType=VARCHAR}, 
-      #{goodsSales,jdbcType=VARCHAR})
+      goods_sales, goods_up_time)
+    values (#{goodsId,jdbcType=BIGINT}, #{goodsName,jdbcType=VARCHAR}, #{goodsTitle,jdbcType=VARCHAR}, 
+      #{goodsImg,jdbcType=VARCHAR}, #{goodsKind,jdbcType=INTEGER}, #{goodsPrice,jdbcType=DOUBLE}, 
+      #{goodsStock,jdbcType=INTEGER}, #{goodsPraise,jdbcType=DOUBLE}, #{goodsIsSeckill,jdbcType=VARCHAR}, 
+      #{goodsSales,jdbcType=INTEGER}, #{goodsUpTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.wyyx.cn.provider.model.Goods">
     insert into goods_info
@@ -148,10 +149,13 @@
       <if test="goodsSales != null">
         goods_sales,
       </if>
+      <if test="goodsUpTime != null">
+        goods_up_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="goodsId != null">
-        #{goodsId,jdbcType=INTEGER},
+        #{goodsId,jdbcType=BIGINT},
       </if>
       <if test="goodsName != null">
         #{goodsName,jdbcType=VARCHAR},
@@ -166,19 +170,22 @@
         #{goodsKind,jdbcType=INTEGER},
       </if>
       <if test="goodsPrice != null">
-        #{goodsPrice,jdbcType=DECIMAL},
+        #{goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="goodsStock != null">
-        #{goodsStock,jdbcType=VARCHAR},
+        #{goodsStock,jdbcType=INTEGER},
       </if>
       <if test="goodsPraise != null">
-        #{goodsPraise,jdbcType=VARCHAR},
+        #{goodsPraise,jdbcType=DOUBLE},
       </if>
       <if test="goodsIsSeckill != null">
         #{goodsIsSeckill,jdbcType=VARCHAR},
       </if>
       <if test="goodsSales != null">
-        #{goodsSales,jdbcType=VARCHAR},
+        #{goodsSales,jdbcType=INTEGER},
+      </if>
+      <if test="goodsUpTime != null">
+        #{goodsUpTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -192,7 +199,7 @@
     update goods_info
     <set>
       <if test="record.goodsId != null">
-        goods_id = #{record.goodsId,jdbcType=INTEGER},
+        goods_id = #{record.goodsId,jdbcType=BIGINT},
       </if>
       <if test="record.goodsName != null">
         goods_name = #{record.goodsName,jdbcType=VARCHAR},
@@ -207,19 +214,22 @@
         goods_kind = #{record.goodsKind,jdbcType=INTEGER},
       </if>
       <if test="record.goodsPrice != null">
-        goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
+        goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.goodsStock != null">
-        goods_stock = #{record.goodsStock,jdbcType=VARCHAR},
+        goods_stock = #{record.goodsStock,jdbcType=INTEGER},
       </if>
       <if test="record.goodsPraise != null">
-        goods_praise = #{record.goodsPraise,jdbcType=VARCHAR},
+        goods_praise = #{record.goodsPraise,jdbcType=DOUBLE},
       </if>
       <if test="record.goodsIsSeckill != null">
         goods_is_seckill = #{record.goodsIsSeckill,jdbcType=VARCHAR},
       </if>
       <if test="record.goodsSales != null">
-        goods_sales = #{record.goodsSales,jdbcType=VARCHAR},
+        goods_sales = #{record.goodsSales,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsUpTime != null">
+        goods_up_time = #{record.goodsUpTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -228,16 +238,17 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update goods_info
-    set goods_id = #{record.goodsId,jdbcType=INTEGER},
+    set goods_id = #{record.goodsId,jdbcType=BIGINT},
       goods_name = #{record.goodsName,jdbcType=VARCHAR},
       goods_title = #{record.goodsTitle,jdbcType=VARCHAR},
       goods_img = #{record.goodsImg,jdbcType=VARCHAR},
       goods_kind = #{record.goodsKind,jdbcType=INTEGER},
-      goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
-      goods_stock = #{record.goodsStock,jdbcType=VARCHAR},
-      goods_praise = #{record.goodsPraise,jdbcType=VARCHAR},
+      goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
+      goods_stock = #{record.goodsStock,jdbcType=INTEGER},
+      goods_praise = #{record.goodsPraise,jdbcType=DOUBLE},
       goods_is_seckill = #{record.goodsIsSeckill,jdbcType=VARCHAR},
-      goods_sales = #{record.goodsSales,jdbcType=VARCHAR}
+      goods_sales = #{record.goodsSales,jdbcType=INTEGER},
+      goods_up_time = #{record.goodsUpTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -258,22 +269,25 @@
         goods_kind = #{goodsKind,jdbcType=INTEGER},
       </if>
       <if test="goodsPrice != null">
-        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+        goods_price = #{goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="goodsStock != null">
-        goods_stock = #{goodsStock,jdbcType=VARCHAR},
+        goods_stock = #{goodsStock,jdbcType=INTEGER},
       </if>
       <if test="goodsPraise != null">
-        goods_praise = #{goodsPraise,jdbcType=VARCHAR},
+        goods_praise = #{goodsPraise,jdbcType=DOUBLE},
       </if>
       <if test="goodsIsSeckill != null">
         goods_is_seckill = #{goodsIsSeckill,jdbcType=VARCHAR},
       </if>
       <if test="goodsSales != null">
-        goods_sales = #{goodsSales,jdbcType=VARCHAR},
+        goods_sales = #{goodsSales,jdbcType=INTEGER},
+      </if>
+      <if test="goodsUpTime != null">
+        goods_up_time = #{goodsUpTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where goods_id = #{goodsId,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wyyx.cn.provider.model.Goods">
     update goods_info
@@ -281,11 +295,24 @@
       goods_title = #{goodsTitle,jdbcType=VARCHAR},
       goods_img = #{goodsImg,jdbcType=VARCHAR},
       goods_kind = #{goodsKind,jdbcType=INTEGER},
-      goods_price = #{goodsPrice,jdbcType=DECIMAL},
-      goods_stock = #{goodsStock,jdbcType=VARCHAR},
-      goods_praise = #{goodsPraise,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      goods_stock = #{goodsStock,jdbcType=INTEGER},
+      goods_praise = #{goodsPraise,jdbcType=DOUBLE},
       goods_is_seckill = #{goodsIsSeckill,jdbcType=VARCHAR},
-      goods_sales = #{goodsSales,jdbcType=VARCHAR}
-    where goods_id = #{goodsId,jdbcType=INTEGER}
+      goods_sales = #{goodsSales,jdbcType=INTEGER},
+      goods_up_time = #{goodsUpTime,jdbcType=TIMESTAMP}
+    where goods_id = #{goodsId,jdbcType=BIGINT}
   </update>
+    <select id="findGoods" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        goods_name,goods_title,goods_img,goods_price
+        from goods_info
+        where goods_id = #{goodsId,jdbcType=INTEGER}
+    </select>
+    <select id="findPrice" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        goods_price
+        from goods_info
+        where goods_id = #{goodsId,jdbcType=INTEGER}
+    </select>
 </mapper>

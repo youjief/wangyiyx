@@ -1,10 +1,11 @@
 package com.wyyx.cn.provider.model;
 
-import java.math.BigDecimal;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class GoodsExample {
+public class GoodsExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -115,52 +116,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdEqualTo(Integer value) {
+        public Criteria andGoodsIdEqualTo(Long value) {
             addCriterion("goods_id =", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdNotEqualTo(Integer value) {
+        public Criteria andGoodsIdNotEqualTo(Long value) {
             addCriterion("goods_id <>", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdGreaterThan(Integer value) {
+        public Criteria andGoodsIdGreaterThan(Long value) {
             addCriterion("goods_id >", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGoodsIdGreaterThanOrEqualTo(Long value) {
             addCriterion("goods_id >=", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdLessThan(Integer value) {
+        public Criteria andGoodsIdLessThan(Long value) {
             addCriterion("goods_id <", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdLessThanOrEqualTo(Integer value) {
+        public Criteria andGoodsIdLessThanOrEqualTo(Long value) {
             addCriterion("goods_id <=", value, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdIn(List<Integer> values) {
+        public Criteria andGoodsIdIn(List<Long> values) {
             addCriterion("goods_id in", values, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdNotIn(List<Integer> values) {
+        public Criteria andGoodsIdNotIn(List<Long> values) {
             addCriterion("goods_id not in", values, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdBetween(Integer value1, Integer value2) {
+        public Criteria andGoodsIdBetween(Long value1, Long value2) {
             addCriterion("goods_id between", value1, value2, "goodsId");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andGoodsIdNotBetween(Long value1, Long value2) {
             addCriterion("goods_id not between", value1, value2, "goodsId");
             return (Criteria) this;
         }
@@ -445,52 +446,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceEqualTo(Double value) {
             addCriterion("goods_price =", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceNotEqualTo(Double value) {
             addCriterion("goods_price <>", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceGreaterThan(BigDecimal value) {
+        public Criteria andGoodsPriceGreaterThan(Double value) {
             addCriterion("goods_price >", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("goods_price >=", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceLessThan(BigDecimal value) {
+        public Criteria andGoodsPriceLessThan(Double value) {
             addCriterion("goods_price <", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceLessThanOrEqualTo(Double value) {
             addCriterion("goods_price <=", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceIn(List<BigDecimal> values) {
+        public Criteria andGoodsPriceIn(List<Double> values) {
             addCriterion("goods_price in", values, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotIn(List<BigDecimal> values) {
+        public Criteria andGoodsPriceNotIn(List<Double> values) {
             addCriterion("goods_price not in", values, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andGoodsPriceBetween(Double value1, Double value2) {
             addCriterion("goods_price between", value1, value2, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andGoodsPriceNotBetween(Double value1, Double value2) {
             addCriterion("goods_price not between", value1, value2, "goodsPrice");
             return (Criteria) this;
         }
@@ -505,62 +506,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockEqualTo(String value) {
+        public Criteria andGoodsStockEqualTo(Integer value) {
             addCriterion("goods_stock =", value, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockNotEqualTo(String value) {
+        public Criteria andGoodsStockNotEqualTo(Integer value) {
             addCriterion("goods_stock <>", value, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockGreaterThan(String value) {
+        public Criteria andGoodsStockGreaterThan(Integer value) {
             addCriterion("goods_stock >", value, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockGreaterThanOrEqualTo(String value) {
+        public Criteria andGoodsStockGreaterThanOrEqualTo(Integer value) {
             addCriterion("goods_stock >=", value, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockLessThan(String value) {
+        public Criteria andGoodsStockLessThan(Integer value) {
             addCriterion("goods_stock <", value, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockLessThanOrEqualTo(String value) {
+        public Criteria andGoodsStockLessThanOrEqualTo(Integer value) {
             addCriterion("goods_stock <=", value, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockLike(String value) {
-            addCriterion("goods_stock like", value, "goodsStock");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsStockNotLike(String value) {
-            addCriterion("goods_stock not like", value, "goodsStock");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsStockIn(List<String> values) {
+        public Criteria andGoodsStockIn(List<Integer> values) {
             addCriterion("goods_stock in", values, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockNotIn(List<String> values) {
+        public Criteria andGoodsStockNotIn(List<Integer> values) {
             addCriterion("goods_stock not in", values, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockBetween(String value1, String value2) {
+        public Criteria andGoodsStockBetween(Integer value1, Integer value2) {
             addCriterion("goods_stock between", value1, value2, "goodsStock");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsStockNotBetween(String value1, String value2) {
+        public Criteria andGoodsStockNotBetween(Integer value1, Integer value2) {
             addCriterion("goods_stock not between", value1, value2, "goodsStock");
             return (Criteria) this;
         }
@@ -575,62 +566,52 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseEqualTo(String value) {
+        public Criteria andGoodsPraiseEqualTo(Double value) {
             addCriterion("goods_praise =", value, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseNotEqualTo(String value) {
+        public Criteria andGoodsPraiseNotEqualTo(Double value) {
             addCriterion("goods_praise <>", value, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseGreaterThan(String value) {
+        public Criteria andGoodsPraiseGreaterThan(Double value) {
             addCriterion("goods_praise >", value, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseGreaterThanOrEqualTo(String value) {
+        public Criteria andGoodsPraiseGreaterThanOrEqualTo(Double value) {
             addCriterion("goods_praise >=", value, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseLessThan(String value) {
+        public Criteria andGoodsPraiseLessThan(Double value) {
             addCriterion("goods_praise <", value, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseLessThanOrEqualTo(String value) {
+        public Criteria andGoodsPraiseLessThanOrEqualTo(Double value) {
             addCriterion("goods_praise <=", value, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseLike(String value) {
-            addCriterion("goods_praise like", value, "goodsPraise");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsPraiseNotLike(String value) {
-            addCriterion("goods_praise not like", value, "goodsPraise");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsPraiseIn(List<String> values) {
+        public Criteria andGoodsPraiseIn(List<Double> values) {
             addCriterion("goods_praise in", values, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseNotIn(List<String> values) {
+        public Criteria andGoodsPraiseNotIn(List<Double> values) {
             addCriterion("goods_praise not in", values, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseBetween(String value1, String value2) {
+        public Criteria andGoodsPraiseBetween(Double value1, Double value2) {
             addCriterion("goods_praise between", value1, value2, "goodsPraise");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPraiseNotBetween(String value1, String value2) {
+        public Criteria andGoodsPraiseNotBetween(Double value1, Double value2) {
             addCriterion("goods_praise not between", value1, value2, "goodsPraise");
             return (Criteria) this;
         }
@@ -715,63 +696,113 @@ public class GoodsExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesEqualTo(String value) {
+        public Criteria andGoodsSalesEqualTo(Integer value) {
             addCriterion("goods_sales =", value, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesNotEqualTo(String value) {
+        public Criteria andGoodsSalesNotEqualTo(Integer value) {
             addCriterion("goods_sales <>", value, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesGreaterThan(String value) {
+        public Criteria andGoodsSalesGreaterThan(Integer value) {
             addCriterion("goods_sales >", value, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesGreaterThanOrEqualTo(String value) {
+        public Criteria andGoodsSalesGreaterThanOrEqualTo(Integer value) {
             addCriterion("goods_sales >=", value, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesLessThan(String value) {
+        public Criteria andGoodsSalesLessThan(Integer value) {
             addCriterion("goods_sales <", value, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesLessThanOrEqualTo(String value) {
+        public Criteria andGoodsSalesLessThanOrEqualTo(Integer value) {
             addCriterion("goods_sales <=", value, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesLike(String value) {
-            addCriterion("goods_sales like", value, "goodsSales");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsSalesNotLike(String value) {
-            addCriterion("goods_sales not like", value, "goodsSales");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsSalesIn(List<String> values) {
+        public Criteria andGoodsSalesIn(List<Integer> values) {
             addCriterion("goods_sales in", values, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesNotIn(List<String> values) {
+        public Criteria andGoodsSalesNotIn(List<Integer> values) {
             addCriterion("goods_sales not in", values, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesBetween(String value1, String value2) {
+        public Criteria andGoodsSalesBetween(Integer value1, Integer value2) {
             addCriterion("goods_sales between", value1, value2, "goodsSales");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsSalesNotBetween(String value1, String value2) {
+        public Criteria andGoodsSalesNotBetween(Integer value1, Integer value2) {
             addCriterion("goods_sales not between", value1, value2, "goodsSales");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeIsNull() {
+            addCriterion("goods_up_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeIsNotNull() {
+            addCriterion("goods_up_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeEqualTo(Date value) {
+            addCriterion("goods_up_time =", value, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeNotEqualTo(Date value) {
+            addCriterion("goods_up_time <>", value, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeGreaterThan(Date value) {
+            addCriterion("goods_up_time >", value, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("goods_up_time >=", value, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeLessThan(Date value) {
+            addCriterion("goods_up_time <", value, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeLessThanOrEqualTo(Date value) {
+            addCriterion("goods_up_time <=", value, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeIn(List<Date> values) {
+            addCriterion("goods_up_time in", values, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeNotIn(List<Date> values) {
+            addCriterion("goods_up_time not in", values, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeBetween(Date value1, Date value2) {
+            addCriterion("goods_up_time between", value1, value2, "goodsUpTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsUpTimeNotBetween(Date value1, Date value2) {
+            addCriterion("goods_up_time not between", value1, value2, "goodsUpTime");
             return (Criteria) this;
         }
     }

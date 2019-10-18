@@ -22,11 +22,11 @@
     <result column="exp_value" jdbcType="INTEGER" property="expValue" />
     <result column="user_scores" jdbcType="INTEGER" property="userScores" />
     <result column="ip_address" jdbcType="VARCHAR" property="ipAddress" />
-    <result column="vip" jdbcType="VARCHAR" property="vip" />
-    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="vip" jdbcType="INTEGER" property="vip" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
     <result column="birth_is_change" jdbcType="INTEGER" property="birthIsChange" />
     <result column="user_addr" jdbcType="VARCHAR" property="userAddr" />
-    <result column="vip_create_time" jdbcType="TIMESTAMP" property="vipCreateTime" />
+    <result column="vip_end_time" jdbcType="TIMESTAMP" property="vipEndTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -90,7 +90,7 @@
     user_id, user_phone, is_delete, user_name, user_password, user_level, create_time, 
     update_time, openid, nickname, `language`, city, province, country, headimgurl, privilege, 
     sex, exp_value, user_scores, ip_address, vip, birthday, birth_is_change, user_addr, 
-    vip_create_time
+    vip_end_time
   </sql>
   <select id="selectByExample" parameterType="com.wyyx.cn.provider.model.UserExample" resultMap="BaseResultMap">
     select
@@ -131,16 +131,16 @@
       privilege, sex, exp_value, 
       user_scores, ip_address, vip, 
       birthday, birth_is_change, user_addr, 
-      vip_create_time)
+      vip_end_time)
     values (#{userId,jdbcType=BIGINT}, #{userPhone,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, 
       #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{userLevel,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{openid,jdbcType=VARCHAR}, 
       #{nickname,jdbcType=VARCHAR}, #{language,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
       #{province,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{headimgurl,jdbcType=VARCHAR}, 
       #{privilege,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{expValue,jdbcType=INTEGER}, 
-      #{userScores,jdbcType=INTEGER}, #{ipAddress,jdbcType=VARCHAR}, #{vip,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=VARCHAR}, #{birthIsChange,jdbcType=INTEGER}, #{userAddr,jdbcType=VARCHAR}, 
-      #{vipCreateTime,jdbcType=TIMESTAMP})
+      #{userScores,jdbcType=INTEGER}, #{ipAddress,jdbcType=VARCHAR}, #{vip,jdbcType=INTEGER}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{birthIsChange,jdbcType=INTEGER}, #{userAddr,jdbcType=VARCHAR}, 
+      #{vipEndTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.wyyx.cn.provider.model.User">
     insert into user_info
@@ -217,8 +217,8 @@
       <if test="userAddr != null">
         user_addr,
       </if>
-      <if test="vipCreateTime != null">
-        vip_create_time,
+      <if test="vipEndTime != null">
+        vip_end_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -283,10 +283,10 @@
         #{ipAddress,jdbcType=VARCHAR},
       </if>
       <if test="vip != null">
-        #{vip,jdbcType=VARCHAR},
+        #{vip,jdbcType=INTEGER},
       </if>
       <if test="birthday != null">
-        #{birthday,jdbcType=VARCHAR},
+        #{birthday,jdbcType=TIMESTAMP},
       </if>
       <if test="birthIsChange != null">
         #{birthIsChange,jdbcType=INTEGER},
@@ -294,8 +294,8 @@
       <if test="userAddr != null">
         #{userAddr,jdbcType=VARCHAR},
       </if>
-      <if test="vipCreateTime != null">
-        #{vipCreateTime,jdbcType=TIMESTAMP},
+      <if test="vipEndTime != null">
+        #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -369,10 +369,10 @@
         ip_address = #{record.ipAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.vip != null">
-        vip = #{record.vip,jdbcType=VARCHAR},
+        vip = #{record.vip,jdbcType=INTEGER},
       </if>
       <if test="record.birthday != null">
-        birthday = #{record.birthday,jdbcType=VARCHAR},
+        birthday = #{record.birthday,jdbcType=TIMESTAMP},
       </if>
       <if test="record.birthIsChange != null">
         birth_is_change = #{record.birthIsChange,jdbcType=INTEGER},
@@ -380,8 +380,8 @@
       <if test="record.userAddr != null">
         user_addr = #{record.userAddr,jdbcType=VARCHAR},
       </if>
-      <if test="record.vipCreateTime != null">
-        vip_create_time = #{record.vipCreateTime,jdbcType=TIMESTAMP},
+      <if test="record.vipEndTime != null">
+        vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -410,11 +410,11 @@
       exp_value = #{record.expValue,jdbcType=INTEGER},
       user_scores = #{record.userScores,jdbcType=INTEGER},
       ip_address = #{record.ipAddress,jdbcType=VARCHAR},
-      vip = #{record.vip,jdbcType=VARCHAR},
-      birthday = #{record.birthday,jdbcType=VARCHAR},
+      vip = #{record.vip,jdbcType=INTEGER},
+      birthday = #{record.birthday,jdbcType=TIMESTAMP},
       birth_is_change = #{record.birthIsChange,jdbcType=INTEGER},
       user_addr = #{record.userAddr,jdbcType=VARCHAR},
-      vip_create_time = #{record.vipCreateTime,jdbcType=TIMESTAMP}
+      vip_end_time = #{record.vipEndTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -480,10 +480,10 @@
         ip_address = #{ipAddress,jdbcType=VARCHAR},
       </if>
       <if test="vip != null">
-        vip = #{vip,jdbcType=VARCHAR},
+        vip = #{vip,jdbcType=INTEGER},
       </if>
       <if test="birthday != null">
-        birthday = #{birthday,jdbcType=VARCHAR},
+        birthday = #{birthday,jdbcType=TIMESTAMP},
       </if>
       <if test="birthIsChange != null">
         birth_is_change = #{birthIsChange,jdbcType=INTEGER},
@@ -491,8 +491,8 @@
       <if test="userAddr != null">
         user_addr = #{userAddr,jdbcType=VARCHAR},
       </if>
-      <if test="vipCreateTime != null">
-        vip_create_time = #{vipCreateTime,jdbcType=TIMESTAMP},
+      <if test="vipEndTime != null">
+        vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where user_id = #{userId,jdbcType=BIGINT}
@@ -518,15 +518,13 @@
       exp_value = #{expValue,jdbcType=INTEGER},
       user_scores = #{userScores,jdbcType=INTEGER},
       ip_address = #{ipAddress,jdbcType=VARCHAR},
-      vip = #{vip,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=VARCHAR},
+      vip = #{vip,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
       birth_is_change = #{birthIsChange,jdbcType=INTEGER},
       user_addr = #{userAddr,jdbcType=VARCHAR},
-      vip_create_time = #{vipCreateTime,jdbcType=TIMESTAMP}
+      vip_end_time = #{vipEndTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
-<<<<<<< HEAD
-=======
     <select id="getAllUser" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
@@ -566,5 +564,13 @@
     <insert id="userPhone" parameterType="com.wyyx.cn.provider.model.User">
        update user_info (user_phone) set user_phone = #{userPhone,jdbcType=VARCHAR} where openid = #{openid,jdbcType=VARCHAR}
     </insert>
->>>>>>> 9fd4455be152eb34c791953713019e3acc1ac1a5
+    <select id="findLevel" resultMap="BaseResultMap">
+       select user_level from user_info where openid = #{openid,jdbcType=VARCHAR}
+    </select>
+    <select id="findScores" resultMap="BaseResultMap">
+       select user_scores from user_info where openid = #{openid,jdbcType=VARCHAR}
+    </select>
+    <select id="findVip" resultMap="BaseResultMap">
+       select vip from user_info where openid = #{openid,jdbcType=VARCHAR}
+    </select>
 </mapper>

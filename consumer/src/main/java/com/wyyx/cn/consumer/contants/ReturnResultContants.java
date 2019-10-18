@@ -46,6 +46,8 @@ public final class ReturnResultContants {
 
     public static final String MSG_REGISTER_ALREADY_EXIST = "该用户名已被注册";
 
+    public static final String MSG_SUCCESS_EXIST="注册成功";
+
     public static final String MSG_DEL_WRONG = "用户注销失败";
 
     public static final String MSG_LOGIN_EXPIRE = "登陆过期,需要重新登录";
@@ -60,9 +62,9 @@ public final class ReturnResultContants {
 
     public static final String HOT_LOCK= "HOT_LOCK:";
 
-    public static final String LOGIN_USER_PHONE="请绑定手机号";
+    public static final String MSG_LOGIN_USER_PHONE="请绑定手机号";
 
-    public static final String LOGIN_AGREE="服务条款";
+    public static final String MSG_LOGIN_AGREE="服务条款";
 
 
 

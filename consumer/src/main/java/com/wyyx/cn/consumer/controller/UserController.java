@@ -81,9 +81,10 @@ public class UserController {
     }
     @ApiOperation("注册")
     @GetMapping(value = "/register")
-    public ReturnResult Register(@Valid UserVo userVo,@ApiParam(value = "同意",required = true) @RequestParam(value = "agree")String agree) {
+    @ResponseBody
+    public ReturnResult Register(@Valid UserVo userVo,@ApiParam(value = "同意",required = true) @RequestParam(value = "agree")int agree) {
 
-       if (agree!=null) {
+       if (userVo.getAgree()==1) {
            boolean isExit = null == redisUtils.get(UserContants.LOGIN_NAME_SPACE + userVo.getUserName()) ? false : true;
            if (!isExit) {
                User user = new User();
@@ -96,20 +97,21 @@ public class UserController {
                user.setUserLevel(1);
                user.setUpdateTime(date);
                try {
-                   redisUtils.set(UserContants.LOGIN_NAME_SPACE + userVo.getUserName(), 1, 180);
+                   redisUtils.set(UserContants.LOGIN_NAME_SPACE + userVo.getUserName(), user, 180);
                    userService.register(user);
                } catch (Exception e) {
                    e.printStackTrace();
                }
-               return ReturnResultUtils.returnSuccess();
+               return ReturnResultUtils.returnSuccess(ReturnResultContants.MSG_SUCCESS_EXIST);
            }
            return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG, ReturnResultContants.MSG_WRONG_REGISTER);
        }
-       return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG,ReturnResultContants.LOGIN_AGREE);
+       return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG,ReturnResultContants.MSG_LOGIN_AGREE);
     }
 
-    @ApiOperation("注册")
-    @GetMapping(value = "/register")
+    @ApiOperation("绑定手机机号")
+    @GetMapping(value = "/userPhone")
+    @ResponseBody
     public ReturnResult userPhone(@ApiParam(value = "手机号",required = true) @RequestParam(value = "gender")String userPhone,
                                   @Valid UserVo userVo){
         String token = null;
@@ -118,6 +120,6 @@ public class UserController {
              userService.userPhone(userPhone);
              return ReturnResultUtils.returnSuccess();
         }
-            return ReturnResultUtils.returnFail(ReturnResultContants.SUCCESS,ReturnResultContants.LOGIN_USER_PHONE);
+            return ReturnResultUtils.returnFail(ReturnResultContants.SUCCESS,ReturnResultContants.MSG_LOGIN_USER_PHONE);
         }
 }

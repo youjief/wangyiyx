@@ -28,5 +28,5 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    List<Order> getOrderList();
+    int findCount(int goodsCount);
 }

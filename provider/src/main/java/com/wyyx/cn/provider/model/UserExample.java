@@ -1446,62 +1446,52 @@ public class UserExample implements Serializable {
             return (Criteria) this;
         }
 
-        public Criteria andVipEqualTo(String value) {
+        public Criteria andVipEqualTo(Integer value) {
             addCriterion("vip =", value, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipNotEqualTo(String value) {
+        public Criteria andVipNotEqualTo(Integer value) {
             addCriterion("vip <>", value, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipGreaterThan(String value) {
+        public Criteria andVipGreaterThan(Integer value) {
             addCriterion("vip >", value, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipGreaterThanOrEqualTo(String value) {
+        public Criteria andVipGreaterThanOrEqualTo(Integer value) {
             addCriterion("vip >=", value, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipLessThan(String value) {
+        public Criteria andVipLessThan(Integer value) {
             addCriterion("vip <", value, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipLessThanOrEqualTo(String value) {
+        public Criteria andVipLessThanOrEqualTo(Integer value) {
             addCriterion("vip <=", value, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipLike(String value) {
-            addCriterion("vip like", value, "vip");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipNotLike(String value) {
-            addCriterion("vip not like", value, "vip");
-            return (Criteria) this;
-        }
-
-        public Criteria andVipIn(List<String> values) {
+        public Criteria andVipIn(List<Integer> values) {
             addCriterion("vip in", values, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipNotIn(List<String> values) {
+        public Criteria andVipNotIn(List<Integer> values) {
             addCriterion("vip not in", values, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipBetween(String value1, String value2) {
+        public Criteria andVipBetween(Integer value1, Integer value2) {
             addCriterion("vip between", value1, value2, "vip");
             return (Criteria) this;
         }
 
-        public Criteria andVipNotBetween(String value1, String value2) {
+        public Criteria andVipNotBetween(Integer value1, Integer value2) {
             addCriterion("vip not between", value1, value2, "vip");
             return (Criteria) this;
         }
@@ -1516,62 +1506,52 @@ public class UserExample implements Serializable {
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayEqualTo(String value) {
+        public Criteria andBirthdayEqualTo(Date value) {
             addCriterion("birthday =", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayNotEqualTo(String value) {
+        public Criteria andBirthdayNotEqualTo(Date value) {
             addCriterion("birthday <>", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayGreaterThan(String value) {
+        public Criteria andBirthdayGreaterThan(Date value) {
             addCriterion("birthday >", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayGreaterThanOrEqualTo(String value) {
+        public Criteria andBirthdayGreaterThanOrEqualTo(Date value) {
             addCriterion("birthday >=", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayLessThan(String value) {
+        public Criteria andBirthdayLessThan(Date value) {
             addCriterion("birthday <", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayLessThanOrEqualTo(String value) {
+        public Criteria andBirthdayLessThanOrEqualTo(Date value) {
             addCriterion("birthday <=", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayLike(String value) {
-            addCriterion("birthday like", value, "birthday");
-            return (Criteria) this;
-        }
-
-        public Criteria andBirthdayNotLike(String value) {
-            addCriterion("birthday not like", value, "birthday");
-            return (Criteria) this;
-        }
-
-        public Criteria andBirthdayIn(List<String> values) {
+        public Criteria andBirthdayIn(List<Date> values) {
             addCriterion("birthday in", values, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayNotIn(List<String> values) {
+        public Criteria andBirthdayNotIn(List<Date> values) {
             addCriterion("birthday not in", values, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayBetween(String value1, String value2) {
+        public Criteria andBirthdayBetween(Date value1, Date value2) {
             addCriterion("birthday between", value1, value2, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayNotBetween(String value1, String value2) {
+        public Criteria andBirthdayNotBetween(Date value1, Date value2) {
             addCriterion("birthday not between", value1, value2, "birthday");
             return (Criteria) this;
         }
@@ -1706,63 +1686,63 @@ public class UserExample implements Serializable {
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeIsNull() {
-            addCriterion("vip_create_time is null");
+        public Criteria andVipEndTimeIsNull() {
+            addCriterion("vip_end_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeIsNotNull() {
-            addCriterion("vip_create_time is not null");
+        public Criteria andVipEndTimeIsNotNull() {
+            addCriterion("vip_end_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeEqualTo(Date value) {
-            addCriterion("vip_create_time =", value, "vipCreateTime");
+        public Criteria andVipEndTimeEqualTo(Date value) {
+            addCriterion("vip_end_time =", value, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeNotEqualTo(Date value) {
-            addCriterion("vip_create_time <>", value, "vipCreateTime");
+        public Criteria andVipEndTimeNotEqualTo(Date value) {
+            addCriterion("vip_end_time <>", value, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeGreaterThan(Date value) {
-            addCriterion("vip_create_time >", value, "vipCreateTime");
+        public Criteria andVipEndTimeGreaterThan(Date value) {
+            addCriterion("vip_end_time >", value, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("vip_create_time >=", value, "vipCreateTime");
+        public Criteria andVipEndTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("vip_end_time >=", value, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeLessThan(Date value) {
-            addCriterion("vip_create_time <", value, "vipCreateTime");
+        public Criteria andVipEndTimeLessThan(Date value) {
+            addCriterion("vip_end_time <", value, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("vip_create_time <=", value, "vipCreateTime");
+        public Criteria andVipEndTimeLessThanOrEqualTo(Date value) {
+            addCriterion("vip_end_time <=", value, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeIn(List<Date> values) {
-            addCriterion("vip_create_time in", values, "vipCreateTime");
+        public Criteria andVipEndTimeIn(List<Date> values) {
+            addCriterion("vip_end_time in", values, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeNotIn(List<Date> values) {
-            addCriterion("vip_create_time not in", values, "vipCreateTime");
+        public Criteria andVipEndTimeNotIn(List<Date> values) {
+            addCriterion("vip_end_time not in", values, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("vip_create_time between", value1, value2, "vipCreateTime");
+        public Criteria andVipEndTimeBetween(Date value1, Date value2) {
+            addCriterion("vip_end_time between", value1, value2, "vipEndTime");
             return (Criteria) this;
         }
 
-        public Criteria andVipCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("vip_create_time not between", value1, value2, "vipCreateTime");
+        public Criteria andVipEndTimeNotBetween(Date value1, Date value2) {
+            addCriterion("vip_end_time not between", value1, value2, "vipEndTime");
             return (Criteria) this;
         }
     }

@@ -18,7 +18,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/wy?=true"
+                        connectionURL="jdbc:mysql://192.168.1.139:3306/wy?=true"
                         userId="root" password="root">
         </jdbcConnection>
 
@@ -43,7 +43,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="" tableName="user_info" domainObjectName="User">
+        <table schema="" tableName="goods_info" domainObjectName="Goods">
             <property name="useActualColumnNames" value="false"/>
             <columnOverride column="id" jdbcType="BIGINT" javaType="java.lang.Long"></columnOverride>
         </table>

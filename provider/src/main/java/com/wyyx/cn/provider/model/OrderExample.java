@@ -1,11 +1,12 @@
 package com.wyyx.cn.provider.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class OrderExample {
+public class OrderExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -436,62 +437,52 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountEqualTo(String value) {
+        public Criteria andGoodsCountEqualTo(Integer value) {
             addCriterion("goods_count =", value, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountNotEqualTo(String value) {
+        public Criteria andGoodsCountNotEqualTo(Integer value) {
             addCriterion("goods_count <>", value, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountGreaterThan(String value) {
+        public Criteria andGoodsCountGreaterThan(Integer value) {
             addCriterion("goods_count >", value, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountGreaterThanOrEqualTo(String value) {
+        public Criteria andGoodsCountGreaterThanOrEqualTo(Integer value) {
             addCriterion("goods_count >=", value, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountLessThan(String value) {
+        public Criteria andGoodsCountLessThan(Integer value) {
             addCriterion("goods_count <", value, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountLessThanOrEqualTo(String value) {
+        public Criteria andGoodsCountLessThanOrEqualTo(Integer value) {
             addCriterion("goods_count <=", value, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountLike(String value) {
-            addCriterion("goods_count like", value, "goodsCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsCountNotLike(String value) {
-            addCriterion("goods_count not like", value, "goodsCount");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsCountIn(List<String> values) {
+        public Criteria andGoodsCountIn(List<Integer> values) {
             addCriterion("goods_count in", values, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountNotIn(List<String> values) {
+        public Criteria andGoodsCountNotIn(List<Integer> values) {
             addCriterion("goods_count not in", values, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountBetween(String value1, String value2) {
+        public Criteria andGoodsCountBetween(Integer value1, Integer value2) {
             addCriterion("goods_count between", value1, value2, "goodsCount");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsCountNotBetween(String value1, String value2) {
+        public Criteria andGoodsCountNotBetween(Integer value1, Integer value2) {
             addCriterion("goods_count not between", value1, value2, "goodsCount");
             return (Criteria) this;
         }
