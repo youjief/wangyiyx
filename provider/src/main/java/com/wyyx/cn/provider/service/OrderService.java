@@ -15,14 +15,19 @@ public interface OrderService {
     long totalOrderList(Order order);
 
     //根据订单状态查询，并分页
-    List<Order> getOrderByStatus(int orderStatus,int startItem, int pageSize);
+    List<Order> getOrderByStatus(Order order);
 
     //根据订单状态查总数
-    int statusOrderList(int orderStatus);
+    int statusOrderList(Order order);
 
     //根据已完成订单或者已确认收货但未评价的才可以删除到回收站
-    int updateOrderStatus(Order order);
+    boolean updateOrderStatus(Order order);
 
     //从回收站删除就彻底删除
-    int delOrder(Order order);
+    boolean delOrder(Long orderId);
+
+    //模糊查询
+    List<Order> getOrdersByLike(Order order);
+
+    Integer totalByLike(Order order);
 }

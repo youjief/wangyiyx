@@ -11,7 +11,7 @@ public interface OrderMapper {
 
     int deleteByExample(OrderExample example);
 
-    int deleteByPrimaryKey(Integer orderId);
+    int deleteByPrimaryKey(Long orderId);
 
     int insert(Order record);
 
@@ -33,15 +33,15 @@ public interface OrderMapper {
 
     List<Order> getOrderList(Order order);
 
-    int totalOrderList();
+    List<Order> getOrderByStatus(Order order);
 
-    List<Order> getOrderByStatus(@Param("orderStatus") int orderStatus,@Param("startItem") int startItem, @Param("pageSize") int pageSize);
-
-    int statusOrderList(int orderStatus);
+    int statusOrderList(Order order);
 
     int updateOrderStatus(Order order);
 
     int delOrder(Order order);
 
-    List<Order> getOrderList2(Order order,@Param("startItem") int startItem, @Param("pageSize") int pageSize);
+    List<Order> getOrdersByLike(Order order);
+
+    Integer totalByLike(Order order);
 }

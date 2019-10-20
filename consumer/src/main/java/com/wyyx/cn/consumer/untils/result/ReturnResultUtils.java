@@ -13,7 +13,7 @@ public class ReturnResultUtils{
      */
     public static ReturnResult returnSuccess(){
         ReturnResult returnResult=new ReturnResult();
-        returnResult.setCode(0);
+        returnResult.setCode(200);
         returnResult.setMessage("success");
         return returnResult;
     }
@@ -24,7 +24,7 @@ public class ReturnResultUtils{
     public static ReturnResult returnSuccess(Object data){
         ReturnResult returnResult=new ReturnResult();
         returnResult.setMessage("success");
-        returnResult.setCode(0);
+        returnResult.setCode(200);
         returnResult.setData(data);
         return returnResult;
     }

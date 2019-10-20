@@ -7,6 +7,7 @@ import com.wyyx.cn.provider.model.OrderExample;
 import com.wyyx.cn.provider.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,6 @@ public class OrderServiceImpl implements OrderService {
         orderExample.setOrderByClause(orderByClause);
 
         List<Order> orderList = orderMapper.getOrderList(order);
-
         if (orderList.size() > 0) {
             return orderList;
         }
@@ -36,19 +36,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public long totalOrderList(Order order) {
+        List<String> list = new ArrayList<>();
+        list.add("-1");
         OrderExample orderExample = new OrderExample();
-        if (null != order.getOrderStatus()) {
-            orderExample.createCriteria().andUserIdEqualTo(order.getUserId()).andOrderStatusEqualTo(""+order.getOrderStatus());
-        } else {
-            orderExample.createCriteria().andUserIdEqualTo(order.getUserId());
-        }
-        long count = orderMapper.countByExample(orderExample);
-        return count;
+        orderExample.createCriteria().andUserIdEqualTo(order.getUserId()).andOrderStatusNotIn(list);
+        return orderMapper.countByExample(orderExample);
     }
 
     @Override
-    public List<Order> getOrderByStatus(int orderStatus, int startItem, int pageSize) {
-        List<Order> orderList = orderMapper.getOrderByStatus(orderStatus, startItem, pageSize);
+    public List<Order> getOrderByStatus(Order order) {
+        List<Order> orderList = orderMapper.getOrderByStatus(order);
         if (orderList.size() > 0) {
             return orderList;
         }
@@ -56,18 +53,31 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public int statusOrderList(int orderStatus) {
-        return orderMapper.statusOrderList(orderStatus);
+    public int statusOrderList(Order order) {
+        return orderMapper.statusOrderList(order);
     }
 
     @Override
-    public int updateOrderStatus(Order order) {
-        return 0;
+    public boolean updateOrderStatus(Order order) {
+        Integer score = order.getGoodsScores();
+        switch (score) {
+        }
+        return orderMapper.updateByPrimaryKeySelective(order) == 1 ? true : false;
     }
 
     @Override
-    public int delOrder(Order order) {
-        return 0;
+    public boolean delOrder(Long orderId) {
+        return orderMapper.deleteByPrimaryKey(orderId) == 1 ? true : false;
+    }
+
+    @Override
+    public List<Order> getOrdersByLike(Order order) {
+        return orderMapper.getOrdersByLike(order);
+    }
+
+    @Override
+    public Integer totalByLike(Order order) {
+        return orderMapper.totalByLike(order);
     }
 
 }

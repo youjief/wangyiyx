@@ -100,9 +100,9 @@
         from order_info
         where order_id = #{orderId,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from order_info
-    where order_id = #{orderId,jdbcType=INTEGER}
+    where order_id = #{orderId}
   </delete>
     <delete id="deleteByExample" parameterType="com.wyyx.cn.provider.model.OrderExample">
         delete from order_info
@@ -338,8 +338,8 @@
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
 
-    <!--查询所有订单-->
-    <select id="getOrderList2" resultMap="BaseResultMap">
+    <!--模糊查询-->
+    <select id="getOrdersByLike" resultMap="BaseResultMap">
         SELECT
         *
         FROM
@@ -361,12 +361,27 @@
             order by pay_time desc limit #{startItem},#{pageSize}
         </where>
     </select>
+    <select id="totalByLike" resultType="java.lang.Integer">
+        select count(0) from order_info
+        <where>
+            user_id = #{userId}
+            <if test="orderStatus != null">
+                AND order_status = #{order.orderStatus}
+            </if>
+            <if test="goodsId != null">
+                and goods_id = #{googdsId}
+            </if>
+            <if test="goodsName != null">
+                and goods_name like concat( '%', #{goodsName}, '%' )
+            </if>
+            <if test="orderId != null">
+                and order_id like concat( '%', #{orderId}, '%' )
+            </if>
+        </where>
+    </select>
 
    <select id="getOrderList" parameterType="com.wyyx.cn.provider.model.Order" resultMap="BaseResultMap">
-     select * from order_info where user_id=#{userId} ORDER BY pay_time DESC LIMIT #{startItem,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
-   </select>
-     <select id="totalOrderList" resultType="java.lang.Integer">
-     select count(0) from order_info where user_id=1
+     select * from order_info where user_id=#{userId} and order_status not in (-1) ORDER BY pay_time DESC LIMIT #{startItem},#{pageSize}
    </select>
 
      <!--查询有条件的订单-->
@@ -376,8 +391,8 @@
        order by pay_time DESC
        LIMIT #{startItem},#{pageSize}
      </select>
-     <select id="statusOrderList" resultType="java.lang.Integer">
-     select count(0) from order_info where order_status=#{orderStatus}
+    <select id="statusOrderList" resultType="java.lang.Integer">
+     select count(0) from order_info where user_id=#{userId} and order_status=#{orderStatus}
    </select>
 
      <update id="updateOrderStatus">
