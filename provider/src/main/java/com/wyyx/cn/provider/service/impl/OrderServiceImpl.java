@@ -19,17 +19,31 @@ public class OrderServiceImpl implements OrderService {
     private OrderMapper orderMapper;
 
     @Override
-    public List<Order> getOrders(int startItem, int pageSize) {
-        List<Order> orderList = orderMapper.getOrderList(startItem, pageSize);
+    public List<Order> getOrders(Order order) {
+        String orderByClause = "pay_time DESC";
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andUserIdEqualTo(order.getUserId());
+        orderExample.setOrderByClause(orderByClause);
+
+        List<Order> orderList = orderMapper.getOrderList(order);
+
         if (orderList.size() > 0) {
             return orderList;
         }
         return null;
     }
 
+
     @Override
-    public int totalOrderList() {
-        return orderMapper.totalOrderList();
+    public long totalOrderList(Order order) {
+        OrderExample orderExample = new OrderExample();
+        if (null != order.getOrderStatus()) {
+            orderExample.createCriteria().andUserIdEqualTo(order.getUserId()).andOrderStatusEqualTo(""+order.getOrderStatus());
+        } else {
+            orderExample.createCriteria().andUserIdEqualTo(order.getUserId());
+        }
+        long count = orderMapper.countByExample(orderExample);
+        return count;
     }
 
     @Override
@@ -44,6 +58,16 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public int statusOrderList(int orderStatus) {
         return orderMapper.statusOrderList(orderStatus);
+    }
+
+    @Override
+    public int updateOrderStatus(Order order) {
+        return 0;
+    }
+
+    @Override
+    public int delOrder(Order order) {
+        return 0;
     }
 
 }

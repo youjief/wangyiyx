@@ -39,7 +39,7 @@ public class LoginReqComplete implements HandlerInterceptor {
             if (StringUtils.isNotEmpty(token) || StringUtils.isNotEmpty(wxToken)) {
 
                 //三元表达式判断userToken取值token或者wxToken
-                String userToken = (String) redisUtils.get(StringUtils.isNotEmpty(token) ? token : wxToken);
+                String userToken = (String) redisUtils.get(StringUtils.isNotEmpty(token) ? token : "wx_user" + wxToken);
 
                 if (StringUtils.isNotEmpty(userToken)) {
                     UserVo sumUserVo = JSONObject.parseObject(userToken, UserVo.class);
@@ -49,7 +49,6 @@ public class LoginReqComplete implements HandlerInterceptor {
                     throw new RuntimeException("login error");
                 }
             }
-
             return true;
         }
         return true;

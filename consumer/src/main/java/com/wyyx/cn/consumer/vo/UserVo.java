@@ -14,6 +14,8 @@ import java.util.Date;
 public class UserVo implements Serializable {
 
 
+    private Long userId;
+
     @ApiModelProperty(value = "微信id",required = false)
     private String openid;
 

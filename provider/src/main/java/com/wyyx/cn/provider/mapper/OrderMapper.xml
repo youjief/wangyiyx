@@ -339,18 +339,57 @@
   </update>
 
     <!--查询所有订单-->
-    <select id="getOrderList" resultMap="BaseResultMap">
-    select * from order_info ORDER BY pay_time DESC LIMIT #{startItem},#{pageSize}
-  </select>
-    <select id="totalOrderList" resultType="java.lang.Integer">
-    select count(0) from order_info
-  </select>
-
-    <!--查询有条件的订单-->
-    <select id="getOrderByStatus" resultMap="BaseResultMap">
-      select * from order_info where order_status=#{orderStatus} order by pay_time DESC LIMIT #{startItem},#{pageSize}
+    <select id="getOrderList2" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+            order_info
+        <where>
+            user_id = #{userId}
+            <if test="orderStatus != null">
+                AND order_status = #{order.orderStatus}
+            </if>
+            <if test="goodsId != null">
+                and goods_id = #{googdsId}
+            </if>
+            <if test="goodsName != null">
+                and goods_name like concat( '%', #{goodsName}, '%' )
+            </if>
+            <if test="orderId != null">
+                and order_id like concat( '%', #{orderId}, '%' )
+            </if>
+            order by pay_time desc limit #{startItem},#{pageSize}
+        </where>
     </select>
-    <select id="statusOrderList" resultType="java.lang.Integer">
-    select count(0) from order_info where order_status=#{orderStatus}
-  </select>
+
+   <select id="getOrderList" parameterType="com.wyyx.cn.provider.model.Order" resultMap="BaseResultMap">
+     select * from order_info where user_id=#{userId} ORDER BY pay_time DESC LIMIT #{startItem,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+   </select>
+     <select id="totalOrderList" resultType="java.lang.Integer">
+     select count(0) from order_info where user_id=1
+   </select>
+
+     <!--查询有条件的订单-->
+     <select id="getOrderByStatus" resultMap="BaseResultMap">
+       select * from order_info
+       where user_id=#{userId} and order_status=#{orderStatus}
+       order by pay_time DESC
+       LIMIT #{startItem},#{pageSize}
+     </select>
+     <select id="statusOrderList" resultType="java.lang.Integer">
+     select count(0) from order_info where order_status=#{orderStatus}
+   </select>
+
+     <update id="updateOrderStatus">
+         update order_info
+         <set>
+             <if test="orderStatus != null">
+                 order_status=#{orderStatus}
+             </if>
+         </set>
+     </update>
+
+     <delete id="delOrder">
+         delete from order_info where user_id and goods_id
+     </delete>
 </mapper>

@@ -17,8 +17,12 @@ public class PageVo implements Serializable {
     //每页大小
     private int pageSize;
 
-    public Integer getCurPage() {
-        return curPage > 0 ? curPage : 1;
+    public void setCurPage(int curPage) {
+        if (curPage > 0) {
+            this.curPage = curPage;
+        } else {
+            this.curPage = 1;
+        }
     }
 
     public Integer getStartItem() {

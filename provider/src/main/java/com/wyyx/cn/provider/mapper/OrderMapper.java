@@ -2,10 +2,9 @@ package com.wyyx.cn.provider.mapper;
 
 import com.wyyx.cn.provider.model.Order;
 import com.wyyx.cn.provider.model.OrderExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 
 public interface OrderMapper {
     long countByExample(OrderExample example);
@@ -30,11 +29,19 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    List<Order> getOrderList(int startItem, int pageSize);
+    //---------------------------------
+
+    List<Order> getOrderList(Order order);
 
     int totalOrderList();
 
-    List<Order> getOrderByStatus(int orderStatus,int startItem, int pageSize);
+    List<Order> getOrderByStatus(@Param("orderStatus") int orderStatus,@Param("startItem") int startItem, @Param("pageSize") int pageSize);
 
     int statusOrderList(int orderStatus);
+
+    int updateOrderStatus(Order order);
+
+    int delOrder(Order order);
+
+    List<Order> getOrderList2(Order order,@Param("startItem") int startItem, @Param("pageSize") int pageSize);
 }

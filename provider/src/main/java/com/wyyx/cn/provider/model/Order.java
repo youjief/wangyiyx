@@ -27,7 +27,7 @@ public class Order implements Serializable {
 
     private String orderChannel;
 
-    private String orderStatus;
+    private Integer orderStatus;
 
     private Date createTime;
 
@@ -36,5 +36,9 @@ public class Order implements Serializable {
     private String goodsFreight;
 
     private String goodsScores;
+
+    private Integer startItem;
+
+    private Integer pageSize;
 
 }

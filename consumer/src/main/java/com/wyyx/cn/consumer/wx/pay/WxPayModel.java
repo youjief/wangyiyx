@@ -17,10 +17,10 @@ import java.io.Serializable;
 @ConfigurationProperties(prefix = "wxPayConfig")
 @Data
 public class WxPayModel implements Serializable {
-private String   appid;
-    private String   mchid;
-    private String   key;
-    private String   unified;
-    private String   notifyurl;
-    private String   type;
+    private String appid;
+    private String mchid;
+    private String key;
+    private String unified;
+    private String notifyurl;
+    private String type;
 }
