@@ -309,10 +309,5 @@
         from goods_info
         where goods_id = #{goodsId,jdbcType=INTEGER}
     </select>
-    <select id="findPrice" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        goods_price
-        from goods_info
-        where goods_id = #{goodsId,jdbcType=INTEGER}
-    </select>
+
 </mapper>

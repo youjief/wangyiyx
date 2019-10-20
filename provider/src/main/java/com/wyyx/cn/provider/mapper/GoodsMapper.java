@@ -30,5 +30,5 @@ public interface GoodsMapper {
 
     List<Goods> findGoods(int goodsId);
 
-    double findPrice(double goodsPrice);
+
 }

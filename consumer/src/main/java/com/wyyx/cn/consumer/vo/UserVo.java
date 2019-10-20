@@ -13,8 +13,6 @@ import java.util.Date;
 @Data
 public class UserVo implements Serializable {
 
-
-    @ApiModelProperty(value = "微信id",required = false)
     private String openid;
 
     @ApiModelProperty(value = "手机号",required = true)
@@ -38,24 +36,17 @@ public class UserVo implements Serializable {
     private String sex;
 
     @ApiModelProperty(value = "生日",required = true)
-    private String birthday;
+    private Date birthday;
 
     private String ipAddress;
+    @ApiModelProperty(value = "同意服务条款",required = true)
+    private String agree;
 
-    private int agree=1;
+    private Double goodsSumprice;
 
+    private Integer userLevel;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private Integer vip;
+    @ApiModelProperty(value = "用户id",required = false)
+    private Long userId;
 }

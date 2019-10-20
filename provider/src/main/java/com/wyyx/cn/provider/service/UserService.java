@@ -32,6 +32,10 @@ public interface UserService {
 
     List<User> getAllUser(User user);
 
-    String userPhone(String userPhone);
+    List<User> userPhone(User user);
+
+    User login(String userName,String userPassword);
+
+    String findAddr(String userAddr);
 
 }

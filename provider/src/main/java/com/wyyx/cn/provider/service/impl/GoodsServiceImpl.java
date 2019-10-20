@@ -1,14 +1,16 @@
 package com.wyyx.cn.provider.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.wyyx.cn.provider.mapper.CartMapper;
 import com.wyyx.cn.provider.mapper.GoodsMapper;
 import com.wyyx.cn.provider.mapper.OrderMapper;
 import com.wyyx.cn.provider.mapper.UserMapper;
+import com.wyyx.cn.provider.model.Cart;
 import com.wyyx.cn.provider.model.Goods;
+import com.wyyx.cn.provider.model.Order;
 import com.wyyx.cn.provider.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -24,6 +26,9 @@ public class GoodsServiceImpl implements GoodsService {
     private UserMapper userMapper;
 
     @Autowired
+    private CartMapper cartMapper;
+
+    @Autowired
     private OrderMapper orderMapper;
 
     @Override
@@ -37,27 +42,25 @@ public class GoodsServiceImpl implements GoodsService {
         return userMapper.findLevel(userLevel);
     }
 
-    //查用户积分
-    @Override
-    public int findScores(Integer userScores) {
-        return userMapper.findScores(userScores);
-    }
-
     //查用户是否为超级会员
     @Override
     public int findVip(int vip) {
         return userMapper.findVip(vip);
     }
 
-    //查询用户购买数量
     @Override
-    public int findCount(int goodsCount) {
-        return orderMapper.findCount(goodsCount);
+    public double findSum(double goodsSumprice) {
+        return cartMapper.findSum(goodsSumprice);
     }
 
-    //查询商品单价
     @Override
-    public double findPrice(double goodsPrice) {
-        return goodsMapper.findPrice(goodsPrice);
+    public List<Cart> findOrder(Cart cart) {
+        return cartMapper.findOrder(cart);
     }
+
+    @Override
+    public int insterOrder(Order order) {
+        return orderMapper.insert(order);
+    }
+
 }

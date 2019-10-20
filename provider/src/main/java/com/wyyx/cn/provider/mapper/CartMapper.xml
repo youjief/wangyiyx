@@ -9,8 +9,9 @@
     <result column="goods_title" jdbcType="VARCHAR" property="goodsTitle" />
     <result column="goods_img" jdbcType="VARCHAR" property="goodsImg" />
     <result column="goods_detail" jdbcType="VARCHAR" property="goodsDetail" />
-    <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
+    <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
     <result column="goods_numbers" jdbcType="INTEGER" property="goodsNumbers" />
+    <result column="goods_sumprice" jdbcType="DOUBLE" property="goodsSumprice" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -72,7 +73,7 @@
   </sql>
   <sql id="Base_Column_List">
     cart_id, user_id, goods_id, goods_name, goods_title, goods_img, goods_detail, goods_price, 
-    goods_numbers
+    goods_numbers, goods_sumprice
   </sql>
   <select id="selectByExample" parameterType="com.wyyx.cn.provider.model.CartExample" resultMap="BaseResultMap">
     select
@@ -107,12 +108,12 @@
   <insert id="insert" parameterType="com.wyyx.cn.provider.model.Cart">
     insert into cart_info (cart_id, user_id, goods_id, 
       goods_name, goods_title, goods_img, 
-      goods_detail, goods_price, goods_numbers
-      )
+      goods_detail, goods_price, goods_numbers, 
+      goods_sumprice)
     values (#{cartId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
       #{goodsName,jdbcType=VARCHAR}, #{goodsTitle,jdbcType=VARCHAR}, #{goodsImg,jdbcType=VARCHAR}, 
-      #{goodsDetail,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DECIMAL}, #{goodsNumbers,jdbcType=INTEGER}
-      )
+      #{goodsDetail,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsNumbers,jdbcType=INTEGER}, 
+      #{goodsSumprice,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.wyyx.cn.provider.model.Cart">
     insert into cart_info
@@ -144,6 +145,9 @@
       <if test="goodsNumbers != null">
         goods_numbers,
       </if>
+      <if test="goodsSumprice != null">
+        goods_sumprice,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="cartId != null">
@@ -168,10 +172,13 @@
         #{goodsDetail,jdbcType=VARCHAR},
       </if>
       <if test="goodsPrice != null">
-        #{goodsPrice,jdbcType=DECIMAL},
+        #{goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="goodsNumbers != null">
         #{goodsNumbers,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSumprice != null">
+        #{goodsSumprice,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -206,10 +213,13 @@
         goods_detail = #{record.goodsDetail,jdbcType=VARCHAR},
       </if>
       <if test="record.goodsPrice != null">
-        goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
+        goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.goodsNumbers != null">
         goods_numbers = #{record.goodsNumbers,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsSumprice != null">
+        goods_sumprice = #{record.goodsSumprice,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null">
@@ -225,8 +235,9 @@
       goods_title = #{record.goodsTitle,jdbcType=VARCHAR},
       goods_img = #{record.goodsImg,jdbcType=VARCHAR},
       goods_detail = #{record.goodsDetail,jdbcType=VARCHAR},
-      goods_price = #{record.goodsPrice,jdbcType=DECIMAL},
-      goods_numbers = #{record.goodsNumbers,jdbcType=INTEGER}
+      goods_price = #{record.goodsPrice,jdbcType=DOUBLE},
+      goods_numbers = #{record.goodsNumbers,jdbcType=INTEGER},
+      goods_sumprice = #{record.goodsSumprice,jdbcType=DOUBLE}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -253,10 +264,13 @@
         goods_detail = #{goodsDetail,jdbcType=VARCHAR},
       </if>
       <if test="goodsPrice != null">
-        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+        goods_price = #{goodsPrice,jdbcType=DOUBLE},
       </if>
       <if test="goodsNumbers != null">
         goods_numbers = #{goodsNumbers,jdbcType=INTEGER},
+      </if>
+      <if test="goodsSumprice != null">
+        goods_sumprice = #{goodsSumprice,jdbcType=DOUBLE},
       </if>
     </set>
     where cart_id = #{cartId,jdbcType=BIGINT}
@@ -269,8 +283,15 @@
       goods_title = #{goodsTitle,jdbcType=VARCHAR},
       goods_img = #{goodsImg,jdbcType=VARCHAR},
       goods_detail = #{goodsDetail,jdbcType=VARCHAR},
-      goods_price = #{goodsPrice,jdbcType=DECIMAL},
-      goods_numbers = #{goodsNumbers,jdbcType=INTEGER}
+      goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      goods_numbers = #{goodsNumbers,jdbcType=INTEGER},
+      goods_sumprice = #{goodsSumprice,jdbcType=DOUBLE}
     where cart_id = #{cartId,jdbcType=BIGINT}
   </update>
+    <select id="findSum" resultMap="BaseResultMap">
+       select sum(goods_sumprice) from cart_info where user_id = #{userId,jdbcType=BIGINT}
+    </select>
+    <select id="findOrder" resultMap="BaseResultMap">
+       select * from cart_info where user_id = #{userId,jdbcType=BIGINT}
+    </select>
 </mapper>

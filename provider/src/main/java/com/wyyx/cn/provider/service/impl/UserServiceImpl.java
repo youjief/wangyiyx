@@ -8,6 +8,7 @@ import com.wyyx.cn.provider.model.User;
 import com.wyyx.cn.provider.model.UserExample;
 import com.wyyx.cn.provider.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 
 
 import java.math.BigDecimal;
@@ -122,8 +123,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String userPhone(String userPhone) {
-        return userMapper.userPhone(userPhone);
+    public List<User> userPhone(User user) {
+        return userMapper.userPhone(user);
     }
 
+    @Override
+    public User login(String userName, String userPassword) {
+        UserExample userExample=new UserExample();
+        userExample.createCriteria().andUserNameEqualTo(userName);
+        List<User> users=userMapper.selectByExample(userExample);
+        if(!CollectionUtils.isEmpty(users)){
+            if(userPassword.equals(users.get(0).getUserPassword())){
+                return users.get(0);
+            }else {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String findAddr(String userAddr) {
+        return userMapper.findAddr(userAddr);
+    }
 }

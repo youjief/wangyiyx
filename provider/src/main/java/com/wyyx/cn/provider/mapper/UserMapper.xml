@@ -562,15 +562,16 @@
         </if>
     </select>
     <insert id="userPhone" parameterType="com.wyyx.cn.provider.model.User">
-       update user_info (user_phone) set user_phone = #{userPhone,jdbcType=VARCHAR} where openid = #{openid,jdbcType=VARCHAR}
+       update user_info set user_phone = #{userPhone,jdbcType=VARCHAR},user_name = #{userName,jdbcType=VARCHAR},user_password = #{userPassword,jdbcType=VARCHAR},birthday = #{birthday,jdbcType=TIMESTAMP},sex = #{sex,jdbcType=VARCHAR}
+        where user_id = #{userId,jdbcType=BIGINT}
     </insert>
     <select id="findLevel" resultMap="BaseResultMap">
-       select user_level from user_info where openid = #{openid,jdbcType=VARCHAR}
-    </select>
-    <select id="findScores" resultMap="BaseResultMap">
-       select user_scores from user_info where openid = #{openid,jdbcType=VARCHAR}
+       select user_level from user_info where user_name = #{userName,jdbcType=VARCHAR}
     </select>
     <select id="findVip" resultMap="BaseResultMap">
-       select vip from user_info where openid = #{openid,jdbcType=VARCHAR}
+       select vip from user_info where user_name = #{userName,jdbcType=VARCHAR}
+    </select>
+    <select id="findAddr" resultMap="BaseResultMap">
+       select user_addr from user_info where user_id = #{userId,jdbcType=BIGINT}
     </select>
 </mapper>

@@ -1,15 +1,6 @@
 package com.wyyx.cn.provider.model;
 
-
-import lombok.Data;
-
-import java.io.Serializable;
-import java.math.BigDecimal;
-
-@Data
-public class Cart implements Serializable {
-    private static final long serialVersionUID = 3910457040530396610L;
-
+public class Cart {
     private Long cartId;
 
     private Long userId;
@@ -24,8 +15,89 @@ public class Cart implements Serializable {
 
     private String goodsDetail;
 
-    private BigDecimal goodsPrice;
+    private Double goodsPrice;
 
     private Integer goodsNumbers;
 
+    private Double goodsSumprice;
+
+    public Long getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(Long cartId) {
+        this.cartId = cartId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public String getGoodsTitle() {
+        return goodsTitle;
+    }
+
+    public void setGoodsTitle(String goodsTitle) {
+        this.goodsTitle = goodsTitle;
+    }
+
+    public String getGoodsImg() {
+        return goodsImg;
+    }
+
+    public void setGoodsImg(String goodsImg) {
+        this.goodsImg = goodsImg;
+    }
+
+    public String getGoodsDetail() {
+        return goodsDetail;
+    }
+
+    public void setGoodsDetail(String goodsDetail) {
+        this.goodsDetail = goodsDetail;
+    }
+
+    public Double getGoodsPrice() {
+        return goodsPrice;
+    }
+
+    public void setGoodsPrice(Double goodsPrice) {
+        this.goodsPrice = goodsPrice;
+    }
+
+    public Integer getGoodsNumbers() {
+        return goodsNumbers;
+    }
+
+    public void setGoodsNumbers(Integer goodsNumbers) {
+        this.goodsNumbers = goodsNumbers;
+    }
+
+    public Double getGoodsSumprice() {
+        return goodsSumprice;
+    }
+
+    public void setGoodsSumprice(Double goodsSumprice) {
+        this.goodsSumprice = goodsSumprice;
+    }
 }

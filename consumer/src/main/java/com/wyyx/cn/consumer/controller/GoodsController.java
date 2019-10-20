@@ -1,9 +1,12 @@
 package com.wyyx.cn.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.wyyx.cn.consumer.config.custom.CurrentUser;
+import com.wyyx.cn.consumer.config.custom.LoginRequired;
 import com.wyyx.cn.consumer.untils.result.ReturnResult;
 import com.wyyx.cn.consumer.untils.result.ReturnResultUtils;
-import com.wyyx.cn.consumer.vo.PriceVo;
+import com.wyyx.cn.consumer.vo.UserVo;
+import com.wyyx.cn.provider.model.User;
 import com.wyyx.cn.provider.service.GoodsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import javax.validation.Valid;
+
 
 
 /**
@@ -28,48 +31,34 @@ public class GoodsController {
 
     @ApiOperation("商品")
     @GetMapping(value = "/findGoodId")
-    public ReturnResult findGoodId(@ApiParam(value = "商品id",required = true) @RequestParam(value = "goodsId")Integer goodsId){
+    public ReturnResult findGoodId(@ApiParam(value = "商品id", required = true) @RequestParam(value = "goodsId") Integer goodsId) {
 
         return ReturnResultUtils.returnSuccess(goodsService.findGodds(goodsId));
 
     }
+
+    @LoginRequired
     @ApiOperation("结算")
     @GetMapping(value = "/settelMoney")
-    public ReturnResult settelMoney(@Valid PriceVo priceVo){
-
-        double sum = 0;
-        double price = goodsService.findPrice(priceVo.getGoodsPrice());
-        Integer level = goodsService.findLevel(priceVo.getUserLevel());
-        double scores = goodsService.findScores(priceVo.getUserScores());
-        int UsersVip = goodsService.findVip(priceVo.getVip());
-        double count = goodsService.findCount(priceVo.getGoodsCount());
-        if (level==3){
-            if (UsersVip==1){
-                if (scores>=100){
-                    sum = (price * count - 5 - scores % 10)*0.98;
-                }else
-                    if (scores<100){
-                    sum=(price * count - 5)*0.98;
-                }
-            }else
-                if (UsersVip==0){
-                if (scores>=100) {
-                    sum = price * count - scores%10;
-                }else
-                if (scores<100){
-                    sum = price*count;
-                }
+    public ReturnResult settelMoney(@ApiParam(value = "用户名登录", required = false) @RequestParam(value = "userName") Long userId,
+                                    @CurrentUser UserVo userVo) {
+        User users = new User();
+        users.getUserId();
+        double allSum = 0;
+        double sum = goodsService.findSum(userVo.getGoodsSumprice());
+        int level = goodsService.findLevel(userVo.getUserLevel());
+        int vip = goodsService.findVip(userVo.getVip());
+        if (level == 4) {
+            if (vip == 1) {
+                allSum = sum - 5;
             }
-        }else
-            if (level<3){
-            if (scores>=100){
-                sum = price*count+10-scores%10;
-            }else
-                if (scores<100){
-                sum=price*count+10;
+            if (vip == 0) {
+                allSum = sum;
             }
         }
-        return ReturnResultUtils.returnSuccess(sum);
+        if (level < 4) {
+            allSum = sum + 10;
+        }
+        return ReturnResultUtils.returnSuccess(allSum);
     }
-
 }

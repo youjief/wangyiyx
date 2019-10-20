@@ -30,11 +30,11 @@ public interface UserMapper {
 
     List<User> getAllUser(User user);
 
-    String userPhone(String userPhone);
+    List<User> userPhone(User user);
 
     int findLevel(Integer userLevel);
 
-    int findScores(Integer userScores);
-
     int findVip(int vip);
+
+    String findAddr(String userAddr);
 }

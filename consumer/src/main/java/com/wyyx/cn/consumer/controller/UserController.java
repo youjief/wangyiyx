@@ -9,6 +9,7 @@ import com.wyyx.cn.consumer.untils.redis.RedisUtils;
 import com.wyyx.cn.consumer.untils.result.ReturnResult;
 import com.wyyx.cn.consumer.untils.result.ReturnResultUtils;
 import com.wyyx.cn.consumer.untils.url.UrlUtils;
+import com.wyyx.cn.consumer.vo.PerfectVo;
 import com.wyyx.cn.consumer.vo.UserVo;
 import com.wyyx.cn.consumer.wxUser.WxUserLogin;
 import com.wyyx.cn.provider.model.User;
@@ -22,8 +23,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by GY on 2019/10/17 14:23
@@ -46,9 +50,7 @@ public class UserController {
 
     @ApiOperation("微信登录")
     @GetMapping("/send")
-    public String sendCode() {
-        return wxLogin.reqCodeUrl();
-    }
+    public String sendCode() { return wxLogin.reqCodeUrl(); }
 
 
     @ResponseBody
@@ -76,21 +78,23 @@ public class UserController {
             userService.register(user);
         }
         String wxId = JSONObject.parseObject(userInfoStr).getString("openid");
-        redisUtils.set(wxId, userInfoStr,180);
-        return userInfoStr;
+        redisUtils.set(UserContants.LOGIN_NAME_SPACE +wxId, userInfoStr,180);
+        return "redirect:http://localhost:8080/doc.html";
     }
     @ApiOperation("注册")
     @GetMapping(value = "/register")
     @ResponseBody
-    public ReturnResult Register(@Valid UserVo userVo,@ApiParam(value = "同意",required = true) @RequestParam(value = "agree")int agree) {
+    public ReturnResult Register(@Valid UserVo userVo) {
 
-       if (userVo.getAgree()==1) {
+       if (userVo.getAgree()!=null) {
            boolean isExit = null == redisUtils.get(UserContants.LOGIN_NAME_SPACE + userVo.getUserName()) ? false : true;
            if (!isExit) {
                User user = new User();
                user.setUserName(userVo.getUserName());
                user.setUserPassword(userVo.getUserPassword());
                user.setUserPhone(userVo.getUserPhone());
+               user.setBirthday(userVo.getBirthday());
+               user.setSex(userVo.getSex());
                Date date = new Date();
                user.setCreateTime(date);
                user.setIsDelete(0);
@@ -104,22 +108,41 @@ public class UserController {
                }
                return ReturnResultUtils.returnSuccess(ReturnResultContants.MSG_SUCCESS_EXIST);
            }
-           return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG, ReturnResultContants.MSG_WRONG_REGISTER);
+           return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG, ReturnResultContants.MSG_REGISTER_ALREADY_EXIST);
        }
        return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG,ReturnResultContants.MSG_LOGIN_AGREE);
     }
-
-    @ApiOperation("绑定手机机号")
+    @ApiOperation("完善用户信息")
     @GetMapping(value = "/userPhone")
     @ResponseBody
-    public ReturnResult userPhone(@ApiParam(value = "手机号",required = true) @RequestParam(value = "gender")String userPhone,
-                                  @Valid UserVo userVo){
-        String token = null;
-        Object wxToken =redisUtils.get(UserContants.LOGIN_NAME_SPACE + userVo.getOpenid());
-        if (token == wxToken&&userVo.getUserPhone()==null){
-             userService.userPhone(userPhone);
-             return ReturnResultUtils.returnSuccess();
+    public ReturnResult userPhone(@Valid PerfectVo perfectVo){
+        User user = new User();
+        user.setUserPhone(perfectVo.getUserPhone());
+        user.setUserName(perfectVo.getUserName());
+        user.setUserPassword(perfectVo.getUserPassword());
+        user.setBirthday(perfectVo.getBirthday());
+        user.setSex(perfectVo.getSex());
+        userService.userPhone(user);
+        return ReturnResultUtils.returnSuccess(ReturnResultContants.MSG_SUCCESS_EXIST);
         }
-            return ReturnResultUtils.returnFail(ReturnResultContants.SUCCESS,ReturnResultContants.MSG_LOGIN_USER_PHONE);
+    @ApiOperation("普通登录")
+    @GetMapping(value = "/Login")
+    @ResponseBody
+    public ReturnResult Login(@ApiParam(value = "手机号", required = true) @RequestParam(value = "userName") String userName,
+                              @ApiParam(value = "密码", required = true) @RequestParam(value = "password") String userPassword,
+                              @ApiParam(value = "同意服务条款", required = true) @RequestParam(value = "agree")String agree,
+                              HttpServletRequest request) {
+        if (agree != null) {
+            String token = request.getSession().getId();
+            User user = userService.login(userName, userPassword);
+            if (null != user) {
+                String str = JSONObject.toJSONString(user);
+                redisUtils.set(token, str, 180);
+                request.getSession().setAttribute("token", token);
+                return ReturnResultUtils.returnSuccess();
+            }
+            return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG, ReturnResultContants.MSG_WRONG_LOGIN);
         }
-}
+        return ReturnResultUtils.returnFail(ReturnResultContants.LOGIN_WRONG,ReturnResultContants.MSG_LOGIN_AGREE);
+    }
+    }

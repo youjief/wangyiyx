@@ -335,7 +335,4 @@
       goods_scores = #{goodsScores,jdbcType=VARCHAR}
     where order_id = #{orderId,jdbcType=INTEGER}
   </update>
-    <select id="findCount" resultMap="BaseResultMap">
-       select goods_count from order_info where goods_id = #{goodsId,jdbcType=INTEGER}
-    </select>
 </mapper>

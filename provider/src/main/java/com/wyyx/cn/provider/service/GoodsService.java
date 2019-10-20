@@ -1,6 +1,8 @@
 package com.wyyx.cn.provider.service;
 
+import com.wyyx.cn.provider.model.Cart;
 import com.wyyx.cn.provider.model.Goods;
+import com.wyyx.cn.provider.model.Order;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,14 +17,18 @@ public interface GoodsService {
     //查用户等级
     int findLevel(Integer userLevel);
 
-    //查用户积分
-    int findScores(Integer userScores);
-
     //查用户是否为超级会员
     int findVip(int vip);
 
-    //查询用户购买数量
-    int findCount(int goodsCount);
+    //查询总价
+    double findSum(double goodsSumprice);
 
-    double findPrice(double goodsPrice);
+    List<Cart> findOrder(Cart cart);
+
+    int insterOrder(Order order);
+
+
+
+
+
 }

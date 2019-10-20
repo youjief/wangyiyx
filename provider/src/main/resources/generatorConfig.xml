@@ -43,7 +43,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="" tableName="goods_info" domainObjectName="Goods">
+        <table schema="" tableName="cart_info" domainObjectName="Cart">
             <property name="useActualColumnNames" value="false"/>
             <columnOverride column="id" jdbcType="BIGINT" javaType="java.lang.Long"></columnOverride>
         </table>

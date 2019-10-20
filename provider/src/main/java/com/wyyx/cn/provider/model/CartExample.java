@@ -1,6 +1,5 @@
 package com.wyyx.cn.provider.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -575,52 +574,52 @@ public class CartExample {
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceEqualTo(Double value) {
             addCriterion("goods_price =", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceNotEqualTo(Double value) {
             addCriterion("goods_price <>", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceGreaterThan(BigDecimal value) {
+        public Criteria andGoodsPriceGreaterThan(Double value) {
             addCriterion("goods_price >", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("goods_price >=", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceLessThan(BigDecimal value) {
+        public Criteria andGoodsPriceLessThan(Double value) {
             addCriterion("goods_price <", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andGoodsPriceLessThanOrEqualTo(Double value) {
             addCriterion("goods_price <=", value, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceIn(List<BigDecimal> values) {
+        public Criteria andGoodsPriceIn(List<Double> values) {
             addCriterion("goods_price in", values, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotIn(List<BigDecimal> values) {
+        public Criteria andGoodsPriceNotIn(List<Double> values) {
             addCriterion("goods_price not in", values, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andGoodsPriceBetween(Double value1, Double value2) {
             addCriterion("goods_price between", value1, value2, "goodsPrice");
             return (Criteria) this;
         }
 
-        public Criteria andGoodsPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andGoodsPriceNotBetween(Double value1, Double value2) {
             addCriterion("goods_price not between", value1, value2, "goodsPrice");
             return (Criteria) this;
         }
@@ -682,6 +681,66 @@ public class CartExample {
 
         public Criteria andGoodsNumbersNotBetween(Integer value1, Integer value2) {
             addCriterion("goods_numbers not between", value1, value2, "goodsNumbers");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceIsNull() {
+            addCriterion("goods_sumprice is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceIsNotNull() {
+            addCriterion("goods_sumprice is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceEqualTo(Double value) {
+            addCriterion("goods_sumprice =", value, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceNotEqualTo(Double value) {
+            addCriterion("goods_sumprice <>", value, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceGreaterThan(Double value) {
+            addCriterion("goods_sumprice >", value, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceGreaterThanOrEqualTo(Double value) {
+            addCriterion("goods_sumprice >=", value, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceLessThan(Double value) {
+            addCriterion("goods_sumprice <", value, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceLessThanOrEqualTo(Double value) {
+            addCriterion("goods_sumprice <=", value, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceIn(List<Double> values) {
+            addCriterion("goods_sumprice in", values, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceNotIn(List<Double> values) {
+            addCriterion("goods_sumprice not in", values, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceBetween(Double value1, Double value2) {
+            addCriterion("goods_sumprice between", value1, value2, "goodsSumprice");
+            return (Criteria) this;
+        }
+
+        public Criteria andGoodsSumpriceNotBetween(Double value1, Double value2) {
+            addCriterion("goods_sumprice not between", value1, value2, "goodsSumprice");
             return (Criteria) this;
         }
     }

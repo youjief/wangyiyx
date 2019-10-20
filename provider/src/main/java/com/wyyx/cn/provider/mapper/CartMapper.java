@@ -27,4 +27,8 @@ public interface CartMapper {
     int updateByPrimaryKeySelective(Cart record);
 
     int updateByPrimaryKey(Cart record);
+
+    double findSum(double goodsSumprice);
+
+    List<Cart> findOrder(Cart cart);
 }
