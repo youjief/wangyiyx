@@ -170,7 +170,7 @@ public class OrderController {
                 order.setOrderId(Long.valueOf(searchKey));
             }
         }
-        Integer totalByLike = orderService.totalByLike(order);
+
         List<Order> ordersByLike = orderService.getOrdersByLike(order);
         if (ordersByLike.size() > 0) {
             return ReturnResultUtils.returnSuccess(ordersByLike);

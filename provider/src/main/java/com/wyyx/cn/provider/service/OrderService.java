@@ -26,8 +26,9 @@ public interface OrderService {
     //从回收站删除就彻底删除
     boolean delOrder(Long orderId);
 
-    //模糊查询
+    //模糊查询，可根据商品名或者订单号模糊查
     List<Order> getOrdersByLike(Order order);
 
+    //统计模糊查询的数量
     Integer totalByLike(Order order);
 }

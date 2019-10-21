@@ -19,12 +19,18 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
 
+    /**
+     * 查询全部订单，并根据支付时间降序排列；
+     * 排除已删除（到回收站的）订单，限制条件写在了SQL语句里
+     * @param order
+     * @return
+     */
     @Override
     public List<Order> getOrders(Order order) {
-        String orderByClause = "pay_time DESC";
+        /*String orderByClause = "pay_time DESC";
         OrderExample orderExample = new OrderExample();
         orderExample.createCriteria().andUserIdEqualTo(order.getUserId());
-        orderExample.setOrderByClause(orderByClause);
+        orderExample.setOrderByClause(orderByClause);*/
 
         List<Order> orderList = orderMapper.getOrderList(order);
         if (orderList.size() > 0) {
@@ -34,6 +40,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
+    /**
+     * 统计全部订单数量，排除已删除（到回收站的）订单
+     * @param order
+     * @return
+     */
     @Override
     public long totalOrderList(Order order) {
         List<String> list = new ArrayList<>();
@@ -43,6 +54,11 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.countByExample(orderExample);
     }
 
+    /**
+     * 根据订单状态查询待付款、待发货、已收货、待评价、已删除（到回收站）订单
+     * @param order
+     * @return
+     */
     @Override
     public List<Order> getOrderByStatus(Order order) {
         List<Order> orderList = orderMapper.getOrderByStatus(order);
@@ -52,11 +68,21 @@ public class OrderServiceImpl implements OrderService {
         return null;
     }
 
+    /**
+     * 统计不同状态的订单数量
+     * @param order
+     * @return
+     */
     @Override
     public int statusOrderList(Order order) {
         return orderMapper.statusOrderList(order);
     }
 
+    /**
+     * 修改订单状态为已支付、已发货、确认收货、已评价订单，包括逻辑删除订单到回收站
+     * @param order
+     * @return
+     */
     @Override
     public boolean updateOrderStatus(Order order) {
         Integer score = order.getGoodsScores();

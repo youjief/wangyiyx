@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface OrderMapper {
+    //查询所有订单数量，不包括已删除订单
     long countByExample(OrderExample example);
 
     int deleteByExample(OrderExample example);
@@ -31,17 +32,24 @@ public interface OrderMapper {
 
     //---------------------------------
 
+    //查询全部订单
     List<Order> getOrderList(Order order);
 
+    //查询有状态的订单
     List<Order> getOrderByStatus(Order order);
 
+    //获取有状态订单总数
     int statusOrderList(Order order);
 
+    //修改订单状态
     int updateOrderStatus(Order order);
 
+    //删除订单
     int delOrder(Order order);
 
+    //模糊查询订单
     List<Order> getOrdersByLike(Order order);
 
+    //模糊查询订单总数
     Integer totalByLike(Order order);
 }
