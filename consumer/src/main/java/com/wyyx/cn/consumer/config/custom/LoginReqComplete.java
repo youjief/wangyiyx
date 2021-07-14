@@ -3,11 +3,7 @@ package com.wyyx.cn.consumer.config.custom;
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.wyyx.cn.consumer.untils.redis.RedisUtils;
-<<<<<<< HEAD
-import com.wyyx.cn.consumer.vo.SumUserVo;
-=======
 import com.wyyx.cn.consumer.vo.UserVo;
->>>>>>> 9fd4455be152eb34c791953713019e3acc1ac1a5
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;

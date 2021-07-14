@@ -109,7 +109,7 @@ public class UserController {
     }
 
     @ApiOperation("注册")
-    @GetMapping(value = "/register")
+    @GetMapping(value = "/register/2")
     public ReturnResult userPhone(@ApiParam(value = "手机号",required = true) @RequestParam(value = "gender")String userPhone,
                                   @Valid UserVo userVo){
         String token = null;

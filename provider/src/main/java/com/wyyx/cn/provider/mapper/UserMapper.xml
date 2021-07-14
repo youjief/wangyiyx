@@ -525,8 +525,7 @@
       vip_create_time = #{vipCreateTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
-<<<<<<< HEAD
-=======
+
     <select id="getAllUser" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
@@ -566,5 +565,4 @@
     <insert id="userPhone" parameterType="com.wyyx.cn.provider.model.User">
        update user_info (user_phone) set user_phone = #{userPhone,jdbcType=VARCHAR} where openid = #{openid,jdbcType=VARCHAR}
     </insert>
->>>>>>> 9fd4455be152eb34c791953713019e3acc1ac1a5
 </mapper>
